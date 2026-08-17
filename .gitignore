@@ -1,0 +1,22 @@
+# Simulator build tree (cmake -S simulator -B build)
+/build/
+
+# Raw campaign outputs are deliberately not shipped (~11 GB; see README).
+# Re-executions repopulate them in place; verify against runs/*/checks/.
+runs/*/raw/
+
+# Output of `reanalise_canonica.py --parcial`; the tracked expected
+# outputs live in analysis/out/
+analysis/out-parcial/
+
+# Python bytecode and virtual environments
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Editor/OS noise
+.vscode/
+.idea/
+*.swp
+.DS_Store

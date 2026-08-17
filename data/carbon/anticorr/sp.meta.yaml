@@ -1,0 +1,9 @@
+generator: carbon_profiles.py
+n_samples: 8760
+step_seconds: 3600
+kind: diurnal_anticorr
+mean_gco2: 463.1
+amplitude_gco2: 434.1
+phase_hours: -3.11
+hours: 8760
+reference: none (parametros manuais)

@@ -1,0 +1,58 @@
+== 0. Escopo dos dados ==
+  run-010-fase1-canonica-seeds42-51: 1760 execuções, 16 células
+  run-011-fase23-canonica-seeds42-51: 1100 execuções, 10 células
+  run-012-em2021-canonica-seeds42-51: 440 execuções, 4 células
+  run-013-fase1-canonica-seeds52-71: 3520 execuções, 16 células
+  total: 6820 execuções, 30 células, 11 algoritmos
+  n_vms por célula, lido do config.yaml congelado: az-anticorr-alta=10000, az-anticorr-folgada=2000, az-em2021-alta=10000, az-em2021-folgada=2000, az-flat-alta=10000, az-flat-folgada=2000, az-realjan-alta=10000, az-realjan-folgada=2000, az-realjun-alta=10000, az-realjun-folgada=2000, geo3-az-realjun-folgada=2000, geo3-go-realjun-folgada=2000, go-anticorr-alta=9000, go-anticorr-folgada=2000, go-em2021-alta=9000, go-em2021-folgada=2000, go-flat-alta=9000, go-flat-folgada=2000, go-realjan-alta=9000, go-realjan-folgada=2000, go-realjun-alta=9000, go-realjun-folgada=2000, hetcap-az-anticorr-folgada=2000, hetcap-az-realjun-folgada=2000, net100-az-anticorr-folgada=2000, net100-az-realjun-alta=10000, net100-az-realjun-folgada=2000, net100-go-realjun-folgada=2000, pue-az-realjun-folgada=2000, pue-go-realjun-folgada=2000
+
+== A-05. Estabilidade do ranking ao passar de 10 para 30 sementes ==
+  células com 30 sementes (fase 1): 16
+  células que permanecem com 10 sementes: 14
+  As duas células do cálculo antigo — net100-go-realjun-folgada, pue-go-realjun-folgada —
+  NÃO estão entre as de 30 sementes. A pergunta canônica cobre outra população;
+  ver o cabeçalho deste script. A-05 não pode ser declarada preservada por
+  semelhança de enunciado.
+  recortes verificados: 42-51 na run-010 e 52-71 na run-013, 11 algoritmos, em 16/16 células
+
+  -- total_gco2 (primária) --
+     16 células:  τ_b mediana = 0.9636; mínima = 0.6154; τ_b = 1,000 em 2/16
+     12 distintas: τ_b mediana = 0.9636; mínima = 0.6154; τ_b = 1,000 em 2/12
+     inversões somadas nas 12 distintas: 23 de 660 pares
+     células cujo primeiro colocado muda (12 distintas): 0
+       go-flat-alta           τ_b = +0.6154  inversões = 10  1º: followme_s -> followme_s
+       go-flat-folgada        τ_b = +0.7308  inversões =  7  1º: ffd -> ffd
+       go-anticorr-alta       τ_b = +0.9273  inversões =  2  1º: follow_renewables -> follow_renewables
+
+  -- gco2_por_vm (secundária) --
+     16 células:  τ_b mediana = 1.0000; mínima = 0.7308; τ_b = 1,000 em 5/16
+     12 distintas: τ_b mediana = 1.0000; mínima = 0.7308; τ_b = 1,000 em 4/12
+     inversões somadas nas 12 distintas: 11 de 660 pares
+     células cujo primeiro colocado muda (12 distintas): 0
+       go-flat-folgada        τ_b = +0.7308  inversões =  7  1º: ffd -> ffd
+       go-flat-alta           τ_b = +0.9615  inversões =  1  1º: best_fit -> best_fit
+       az-realjun-folgada     τ_b = +0.9630  inversões =  1  1º: followme_s -> followme_s
+
+  -- coeficiente de variação de total_gco2 (132 combinações distintas) --
+     CV a 10 sementes:  mediana 0.77%  máximo 8.65%  acima de 5%: 6/132
+     CV a 30 sementes:  mediana 0.89%  máximo 11.33%  acima de 5%: 12/132
+     Δ CV (30 − 10):    mediana +0.07 p.p.  mínimo -0.73  máximo +2.80
+
+     Permutabilidade das duas metades (decisão 2): as vinte sementes novas
+     sozinhas contra as dez antigas sozinhas.
+     CV a 20 novas:     mediana 0.94%  máximo 12.55%
+     Δ CV (20 − 10):    mediana +0.10 p.p.  mínimo -1.18  máximo +4.02
+     Um Δ mediano próximo de zero é compatível com metades permutáveis; não
+     é prova de independência, e não substitui a ressalva de que a extensão
+     é continuação determinística do mesmo gerador (R-SEEDS-ESCOPO).
+     cinco maiores CV a 30 sementes:
+       go-anticorr-folgada    ffd                CV10 =   8.53%  CV30 =  11.33%  Δ = +2.80 p.p.
+       go-anticorr-folgada    first_fit          CV10 =   8.65%  CV30 =   9.90%  Δ = +1.25 p.p.
+       go-realjun-folgada     follow_renewables  CV10 =   7.24%  CV30 =   9.21%  Δ = +1.96 p.p.
+       go-realjun-folgada     lowest_carbon_dc   CV10 =   7.24%  CV30 =   9.21%  Δ = +1.96 p.p.
+       go-realjun-folgada     followme_s         CV10 =   7.08%  CV30 =   8.25%  Δ = +1.17 p.p.
+
+== artefatos escritos ==
+  a05_tau_10_vs_30.csv
+  a05_cv_por_combinacao.csv
+  a05_celulas_sem_30.csv

@@ -1,0 +1,111 @@
+== 0. Escopo dos dados ==
+  run-010-fase1-canonica-seeds42-51: 1760 execuções, 16 células
+  run-011-fase23-canonica-seeds42-51: 1100 execuções, 10 células
+  run-012-em2021-canonica-seeds42-51: 440 execuções, 4 células
+  run-013-fase1-canonica-seeds52-71: 3520 execuções, 16 células
+  total: 6820 execuções, 30 células, 11 algoritmos
+  n_vms por célula, lido do config.yaml congelado: az-anticorr-alta=10000, az-anticorr-folgada=2000, az-em2021-alta=10000, az-em2021-folgada=2000, az-flat-alta=10000, az-flat-folgada=2000, az-realjan-alta=10000, az-realjan-folgada=2000, az-realjun-alta=10000, az-realjun-folgada=2000, geo3-az-realjun-folgada=2000, geo3-go-realjun-folgada=2000, go-anticorr-alta=9000, go-anticorr-folgada=2000, go-em2021-alta=9000, go-em2021-folgada=2000, go-flat-alta=9000, go-flat-folgada=2000, go-realjan-alta=9000, go-realjan-folgada=2000, go-realjun-alta=9000, go-realjun-folgada=2000, hetcap-az-anticorr-folgada=2000, hetcap-az-realjun-folgada=2000, net100-az-anticorr-folgada=2000, net100-az-realjun-alta=10000, net100-az-realjun-folgada=2000, net100-go-realjun-folgada=2000, pue-az-realjun-folgada=2000, pue-go-realjun-folgada=2000
+
+== A-17. Capacidade heterogênea (hetcap) e saturação do data center limpo ==
+  células hetcap: n = hetcap-az-realjun-folgada=10, hetcap-az-anticorr-folgada=10
+  células-base:   n = az-realjun-folgada=30, az-anticorr-folgada=30 -> restritas às sementes 42-51
+
+  -- (i) hetcap-az-realjun-folgada contra az-realjun-folgada, variação de emissão --
+     Wilcoxon pareado sobre 10 sementes; piso do teste exato = 0.001953125; Holm com família de 11
+     first_fit          generico     *      13030 ->      14575 gCO2e    +11.86%  p=0.001953  Holm11=0.02148
+     ffd                generico     *      13062 ->      14776 gCO2e    +13.13%  p=0.001953  Holm11=0.02148
+     best_fit           generico            21480 ->      25001 gCO2e    +16.39%  p=0.001953  Holm11=0.02148
+     worst_fit          generico            27705 ->      32806 gCO2e    +18.41%  p=0.001953  Holm11=0.02148
+     bfd                generico     *      21496 ->      25831 gCO2e    +20.17%  p=0.001953  Holm11=0.02148
+     round_robin        generico            60716 ->      74719 gCO2e    +23.06%  p=0.001953  Holm11=0.02148
+     follow_renewables  carbon_aware *       5977 ->       9571 gCO2e    +60.13%  p=0.001953  Holm11=0.02148
+     wsnb               carbon_aware *       6481 ->      11370 gCO2e    +75.42%  p=0.001953  Holm11=0.02148
+     cnemesis           carbon_aware *       5644 ->      10174 gCO2e    +80.26%  p=0.001953  Holm11=0.02148
+     followme_s         carbon_aware         5424 ->      10394 gCO2e    +91.62%  p=0.001953  Holm11=0.02148
+     lowest_carbon_dc   carbon_aware *       5977 ->      12047 gCO2e   +101.54%  p=0.001953  Holm11=0.02148
+     significativos após Holm: 11/11
+     sensíveis a carbono: +60.13% a +101.54%
+     genéricos:           +11.86% a +23.06%
+     (* = algoritmo do subconjunto de sete do cálculo antigo)
+
+  -- (i) hetcap-az-anticorr-folgada contra az-anticorr-folgada, variação de emissão --
+     Wilcoxon pareado sobre 10 sementes; piso do teste exato = 0.001953125; Holm com família de 11
+     round_robin        generico            46453 ->      38446 gCO2e    -17.24%  p=0.001953  Holm11=0.02148
+     best_fit           generico            13049 ->      10936 gCO2e    -16.20%  p=0.001953  Holm11=0.02148
+     cnemesis           carbon_aware *       5939 ->       5023 gCO2e    -15.42%  p=0.001953  Holm11=0.02148
+     worst_fit          generico            21392 ->      18162 gCO2e    -15.10%  p=0.001953  Holm11=0.02148
+     followme_s         carbon_aware         5568 ->       4728 gCO2e    -15.09%  p=0.001953  Holm11=0.02148
+     follow_renewables  carbon_aware *       6396 ->       5436 gCO2e    -15.02%  p=0.001953  Holm11=0.02148
+     lowest_carbon_dc   carbon_aware *       6396 ->       5436 gCO2e    -15.02%  p=0.001953  Holm11=0.02148
+     bfd                generico     *      15362 ->      13106 gCO2e    -14.69%  p=0.001953  Holm11=0.02148
+     ffd                generico     *       9888 ->       8633 gCO2e    -12.70%  p=0.001953  Holm11=0.02148
+     first_fit          generico     *       8837 ->       8139 gCO2e     -7.91%  p=0.001953  Holm11=0.02148
+     wsnb               carbon_aware *       6200 ->       6165 gCO2e     -0.56%  p=0.009766  Holm11=0.02148
+     significativos após Holm: 11/11
+     sensíveis a carbono: -15.42% a -0.56%
+     genéricos:           -17.24% a -7.91%
+     (* = algoritmo do subconjunto de sete do cálculo antigo)
+
+  -- (ii) postos de emissão (midrank; menor = melhor) --
+     az-realjun-folgada: followme_s=1, cnemesis=2, follow_renewables=3.5, lowest_carbon_dc=3.5, wsnb=5, first_fit=6, ffd=7, best_fit=8, bfd=9, worst_fit=10, round_robin=11
+       empate exato de média entre algoritmos nesta célula: SIM — midrank e min-rank divergem aqui
+     hetcap-az-realjun-folgada: follow_renewables=1, cnemesis=2, followme_s=3, wsnb=4, lowest_carbon_dc=5, first_fit=6, ffd=7, best_fit=8, bfd=9, worst_fit=10, round_robin=11
+       empate exato de média entre algoritmos nesta célula: não — midrank e min-rank coincidem
+       lowest_carbon_dc: posto 3.5 -> 5
+       follow_renewables: posto 3.5 -> 1
+       wsnb: posto 5 -> 4
+     az-anticorr-folgada: followme_s=1, cnemesis=2, wsnb=3, follow_renewables=4.5, lowest_carbon_dc=4.5, first_fit=6, ffd=7, best_fit=8, bfd=9, worst_fit=10, round_robin=11
+       empate exato de média entre algoritmos nesta célula: SIM — midrank e min-rank divergem aqui
+     hetcap-az-anticorr-folgada: followme_s=1, cnemesis=2, follow_renewables=3.5, lowest_carbon_dc=3.5, wsnb=5, first_fit=6, ffd=7, best_fit=8, bfd=9, worst_fit=10, round_robin=11
+       empate exato de média entre algoritmos nesta célula: SIM — midrank e min-rank divergem aqui
+       lowest_carbon_dc: posto 4.5 -> 3.5
+       follow_renewables: posto 4.5 -> 3.5
+       wsnb: posto 3 -> 5
+
+  -- (iii) vantagem do melhor sensível a carbono sobre o melhor genérico --
+     (recorte de 10 sementes nos DOIS lados; a reanálise principal reporta
+      as células-base com 30 sementes, e os dois números não são intercambiáveis)
+     az-realjun-folgada             followme_s vs first_fit: vantagem +58.4%  p=0.001953
+     hetcap-az-realjun-folgada      follow_renewables vs first_fit: vantagem +34.3%  p=0.001953
+     az-anticorr-folgada            followme_s vs first_fit: vantagem +37.0%  p=0.001953
+     hetcap-az-anticorr-folgada     followme_s vs first_fit: vantagem +41.9%  p=0.001953
+     para contraste, o mesmo par com o n da célula na reanálise principal:
+       az-realjun-folgada             n=30: +58.7%
+       hetcap-az-realjun-folgada      n=10: +34.3%
+       az-anticorr-folgada            n=30: +37.8%
+       hetcap-az-anticorr-folgada     n=10: +41.9%
+
+  -- (iv) fração de alocações em paris, por evento --
+     lida de decisions.jsonl (kind == 'placement'), média das frações por semente
+
+     az-realjun-folgada -> hetcap-az-realjun-folgada
+       best_fit              10.39% ->   4.13%  (-0.0626 em fração)
+       bfd                *  10.39% ->   4.17%  (-0.0622 em fração)
+       cnemesis           *  34.16% ->  10.61%  (-0.2356 em fração)
+       ffd                *  26.84% ->  15.68%  (-0.1116 em fração)
+       first_fit          *  22.82% ->  15.70%  (-0.0712 em fração)
+       follow_renewables  *  34.16% ->  10.61%  (-0.2356 em fração)
+       followme_s            34.16% ->  10.61%  (-0.2356 em fração)
+       lowest_carbon_dc   *  34.16% ->  10.61%  (-0.2356 em fração)
+       round_robin           10.95% ->   4.35%  (-0.0660 em fração)
+       worst_fit             10.96% ->   4.38%  (-0.0658 em fração)
+       wsnb               *  34.61% ->  12.03%  (-0.2257 em fração)
+
+     az-anticorr-folgada -> hetcap-az-anticorr-folgada
+       best_fit              10.39% ->   4.13%  (-0.0626 em fração)
+       bfd                *  10.39% ->   4.17%  (-0.0622 em fração)
+       cnemesis           *   0.00% ->   0.00%  (+0.0000 em fração)
+       ffd                *  26.84% ->  15.68%  (-0.1116 em fração)
+       first_fit          *  22.82% ->  15.70%  (-0.0712 em fração)
+       follow_renewables  *   0.00% ->   0.00%  (+0.0000 em fração)
+       followme_s             0.00% ->   0.00%  (+0.0000 em fração)
+       lowest_carbon_dc   *   0.00% ->   0.00%  (+0.0000 em fração)
+       round_robin           10.95% ->   4.35%  (-0.0660 em fração)
+       worst_fit             10.96% ->   4.38%  (-0.0658 em fração)
+       wsnb               *   0.00% ->   0.00%  (+0.0000 em fração)
+
+== artefatos escritos ==
+  a17_delta_gco2_por_algoritmo.csv
+  a17_postos.csv
+  a17_vantagem_ca_vs_gb.csv
+  a17_alocacoes_no_limpo.csv

@@ -1,0 +1,124 @@
+run_id: run-010-fase1-canonica-seeds42-51
+dates: 2026-08-06 to 2026-08-07
+status: completed
+binary:
+  repo: algorithms-simgrid
+  commit: 305e2b27726305e196eea090fabc312280b39e1f
+  sha256: 36bfe40eed33c8b8cb491894acd6f63c05c13e0d7a15a6e6f7b9401246d94c6d
+seeds:
+- 42
+- 43
+- 44
+- 45
+- 46
+- 47
+- 48
+- 49
+- 50
+- 51
+algorithms:
+  placement_order:
+  - first_fit
+  - best_fit
+  - worst_fit
+  - round_robin
+  - ffd
+  - bfd
+  - lowest_carbon_dc
+  - follow_renewables
+  - wsnb
+  - followme_s
+  - cnemesis
+  migration_capable:
+  - follow_renewables
+  - followme_s
+  - cnemesis
+  source: algosim list at commit 305e2b2
+  policy_check: the algorithm.migration field of each run's manifest.json was verified
+    against the intended policy, 1760/1760 runs
+cells:
+- id: az-realjun-folgada
+  yaml: configs/scenarios/geo_9dc_azure.yaml
+  status: completed
+  runs_ok: 110
+- id: az-realjun-alta
+  yaml: configs/scenarios/fase1/geo9_azure_realjun_alta.yaml
+  status: completed
+  runs_ok: 110
+- id: az-realjan-folgada
+  yaml: configs/scenarios/fase1/geo9_azure_realjan_folgada.yaml
+  status: completed
+  runs_ok: 110
+  note: redundant with az-realjun-folgada by construction of the synthetic carbon series
+- id: az-realjan-alta
+  yaml: configs/scenarios/fase1/geo9_azure_realjan_alta.yaml
+  status: completed
+  runs_ok: 110
+  note: redundant with az-realjun-alta (same reason)
+- id: az-flat-folgada
+  yaml: configs/scenarios/fase1/geo9_azure_flat_folgada.yaml
+  status: completed
+  runs_ok: 110
+- id: az-flat-alta
+  yaml: configs/scenarios/fase1/geo9_azure_flat_alta.yaml
+  status: completed
+  runs_ok: 110
+- id: az-anticorr-folgada
+  yaml: configs/scenarios/fase1/geo9_azure_anticorr_folgada.yaml
+  status: completed
+  runs_ok: 110
+- id: az-anticorr-alta
+  yaml: configs/scenarios/fase1/geo9_azure_anticorr_alta.yaml
+  status: completed
+  runs_ok: 110
+- id: go-realjun-folgada
+  yaml: configs/scenarios/geo_9dc_google.yaml
+  status: completed
+  runs_ok: 110
+- id: go-realjun-alta
+  yaml: configs/scenarios/fase1/geo9_google_realjun_alta.yaml
+  status: completed
+  runs_ok: 110
+- id: go-realjan-folgada
+  yaml: configs/scenarios/fase1/geo9_google_realjan_folgada.yaml
+  status: completed
+  runs_ok: 110
+  note: redundant with go-realjun-folgada (same reason)
+- id: go-realjan-alta
+  yaml: configs/scenarios/fase1/geo9_google_realjan_alta.yaml
+  status: completed
+  runs_ok: 110
+  note: redundant with go-realjun-alta (same reason)
+- id: go-flat-folgada
+  yaml: configs/scenarios/fase1/geo9_google_flat_folgada.yaml
+  status: completed
+  runs_ok: 110
+- id: go-flat-alta
+  yaml: configs/scenarios/fase1/geo9_google_flat_alta.yaml
+  status: completed
+  runs_ok: 110
+- id: go-anticorr-folgada
+  yaml: configs/scenarios/fase1/geo9_google_anticorr_folgada.yaml
+  status: completed
+  runs_ok: 110
+- id: go-anticorr-alta
+  yaml: configs/scenarios/fase1/geo9_google_anticorr_alta.yaml
+  status: completed
+  runs_ok: 110
+command_template: algosim run <scenario.yaml> --placement <policy> --migration <policy> --seed
+  <seed> --output <dir>
+outputs:
+  processed: processed/
+  checksums: checks/SHA256SUMS.txt
+  determinism_sentinels: checks/determinism-sentinel/results.tsv
+note: checks/SHA256SUMS.txt is the frozen per-file commitment computed over the full run directory,
+  including raw/ (not distributed) and internal check reports (not distributed); verify what
+  is present or re-executed with sha256sum -c --ignore-missing
+environment:
+  os_kernel: 7.0.0-28-generic
+  cpu: AMD Ryzen 7 5700X 8-Core Processor
+  cores: 16
+  gxx: g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+  cmake: cmake version 3.28.3
+  python: Python 3.12.3
+  simgrid: 4.1.1

@@ -1,0 +1,52 @@
+== 0. Escopo dos dados ==
+  run-010-fase1-canonica-seeds42-51: 1760 execuções, 16 células
+  run-011-fase23-canonica-seeds42-51: 1100 execuções, 10 células
+  run-012-em2021-canonica-seeds42-51: 440 execuções, 4 células
+  run-013-fase1-canonica-seeds52-71: 3520 execuções, 16 células
+  total: 6820 execuções, 30 células, 11 algoritmos
+  n_vms por célula, lido do config.yaml congelado: az-anticorr-alta=10000, az-anticorr-folgada=2000, az-em2021-alta=10000, az-em2021-folgada=2000, az-flat-alta=10000, az-flat-folgada=2000, az-realjan-alta=10000, az-realjan-folgada=2000, az-realjun-alta=10000, az-realjun-folgada=2000, geo3-az-realjun-folgada=2000, geo3-go-realjun-folgada=2000, go-anticorr-alta=9000, go-anticorr-folgada=2000, go-em2021-alta=9000, go-em2021-folgada=2000, go-flat-alta=9000, go-flat-folgada=2000, go-realjan-alta=9000, go-realjan-folgada=2000, go-realjun-alta=9000, go-realjun-folgada=2000, hetcap-az-anticorr-folgada=2000, hetcap-az-realjun-folgada=2000, net100-az-anticorr-folgada=2000, net100-az-realjun-alta=10000, net100-az-realjun-folgada=2000, net100-go-realjun-folgada=2000, pue-az-realjun-folgada=2000, pue-go-realjun-folgada=2000
+
+== A-19. Vitória simultânea em gCO2e e kWh, e custo por GiB migrado ==
+  universo declarado: 30 células × 3 migradores = 90 contrastes contra lowest_carbon_dc
+  `total_mig_bytes` está em MiB; GiB = MiB / 1024 (R-MIGBYTES-V2: bytes
+  realmente transferidos; `total_migrations` conta migrações EMITIDAS)
+
+  -- (a) vitória simultânea --
+     contrastes elegíveis (volume migrado > 0): 74 de 90
+     vencem em gCO2e E em kWh: 67/74
+     dominados (piores em pelo menos uma): 7/74
+     empates (diferença exatamente nula em uma das duas): 0/74
+       DOMINADO  geo3-go-realjun-folgada      cnemesis           gCO2e +3.117%  kWh +2.260%  p_holm3 = 0.005859
+       DOMINADO  geo3-go-realjun-folgada      follow_renewables  gCO2e +0.270%  kWh +0.324%  p_holm3 = 0.625
+       DOMINADO  go-realjan-alta              cnemesis           gCO2e -0.251%  kWh +0.049%  p_holm3 = 0.02341
+       DOMINADO  go-realjun-alta              cnemesis           gCO2e -0.251%  kWh +0.049%  p_holm3 = 0.02341
+       DOMINADO  net100-az-anticorr-folgada   followme_s         gCO2e +0.424%  kWh +1.903%  p_holm3 = 0.07422
+       DOMINADO  net100-az-realjun-alta       cnemesis           gCO2e -0.027%  kWh +0.014%  p_holm3 = 0.5566
+       DOMINADO  net100-az-realjun-alta       follow_renewables  gCO2e -0.097%  kWh +0.092%  p_holm3 = 0.2109
+     fora da contagem por não migrarem: 16 contrastes, em 16 células — majoritariamente follow_renewables
+     dos 67 que vencem, 62 têm o gCO2e significativo sob Holm m = 3 (contexto; a contagem de
+     destaque é sobre sinal de média, como no artigo)
+
+  -- (b) gCO2e economizados por GiB migrado --
+     67 contrastes com razão definida: mínimo 0.0009, máximo 0.8473, mediana 0.0621 gCO2e/GiB
+       menor  net100-az-realjun-folgada    followme_s         0.0009 gCO2e/GiB (2941.6 GiB)
+       menor  az-em2021-folgada            cnemesis           0.0133 gCO2e/GiB (3680.5 GiB)
+       menor  go-flat-alta                 cnemesis           0.0149 gCO2e/GiB (3614.2 GiB)
+       maior  go-em2021-folgada            follow_renewables  0.8473 gCO2e/GiB (480.6 GiB)
+       maior  hetcap-az-realjun-folgada    follow_renewables  0.5919 gCO2e/GiB (4182.0 GiB)
+       maior  hetcap-az-realjun-folgada    cnemesis           0.5059 gCO2e/GiB (3700.7 GiB)
+
+  -- efeito do tamanho de amostra, 16 células de 30 sementes --
+     contrastes que mudam de categoria ao restringir às sementes 42-51: 2
+       go-realjan-alta              cnemesis           dominado -> vence_ambos
+       go-realjun-alta              cnemesis           dominado -> vence_ambos
+
+  -- recorte comparável ao número antigo: 12 células, sementes 42-51 --
+     mesma lista de células e mesmas sementes do cálculo antigo; a única
+     diferença em relação a ele é a política de desempate
+     elegíveis: 28 de 36   (o número antigo declarava 28 de 36)
+     vencem em gCO2e E em kWh: 28/28   (o número antigo declarava 27/28, 1 dominado)
+     gCO2e por GiB: mínimo 0.0108, máximo 0.3741 (o número antigo declarava 0,0086 a 0,2198)
+
+== artefatos escritos ==
+  a19_custo_beneficio.csv

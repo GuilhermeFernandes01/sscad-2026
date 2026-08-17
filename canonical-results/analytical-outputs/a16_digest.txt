@@ -1,0 +1,40 @@
+== 0. Escopo dos dados ==
+  run-010-fase1-canonica-seeds42-51: 1760 execuções, 16 células
+  run-011-fase23-canonica-seeds42-51: 1100 execuções, 10 células
+  run-012-em2021-canonica-seeds42-51: 440 execuções, 4 células
+  run-013-fase1-canonica-seeds52-71: 3520 execuções, 16 células
+  total: 6820 execuções, 30 células, 11 algoritmos
+  n_vms por célula, lido do config.yaml congelado: az-anticorr-alta=10000, az-anticorr-folgada=2000, az-em2021-alta=10000, az-em2021-folgada=2000, az-flat-alta=10000, az-flat-folgada=2000, az-realjan-alta=10000, az-realjan-folgada=2000, az-realjun-alta=10000, az-realjun-folgada=2000, geo3-az-realjun-folgada=2000, geo3-go-realjun-folgada=2000, go-anticorr-alta=9000, go-anticorr-folgada=2000, go-em2021-alta=9000, go-em2021-folgada=2000, go-flat-alta=9000, go-flat-folgada=2000, go-realjan-alta=9000, go-realjan-folgada=2000, go-realjun-alta=9000, go-realjun-folgada=2000, hetcap-az-anticorr-folgada=2000, hetcap-az-realjun-folgada=2000, net100-az-anticorr-folgada=2000, net100-az-realjun-alta=10000, net100-az-realjun-folgada=2000, net100-go-realjun-folgada=2000, pue-az-realjun-folgada=2000, pue-go-realjun-folgada=2000
+
+== A-16. Indicador de sobrealocação de CPU ==
+  o indicador é `final_sla_violations`: VMs em hospedeiro cuja demanda somada excede a
+  capacidade, acumuladas por tick [origem: algorithms-simgrid/src/metrics/sla.cpp]
+
+  -- (a) discriminação, 6820 execuções em 30 células --
+     estáticos (8 algoritmos): 0 de 4960 execuções com indicador > 0
+     com migração (3 algoritmos): 1322 de 1860 execuções com indicador > 0
+       best_fit           estatico          0/  620  máximo = 0  células = 0
+       bfd                estatico          0/  620  máximo = 0  células = 0
+       cnemesis           com_migracao    479/  620  máximo = 18477  células = 24
+       ffd                estatico          0/  620  máximo = 0  células = 0
+       first_fit          estatico          0/  620  máximo = 0  células = 0
+       follow_renewables  com_migracao    249/  620  máximo = 44975  células = 13
+       followme_s         com_migracao    594/  620  máximo = 9862  células = 30
+       lowest_carbon_dc   estatico          0/  620  máximo = 0  células = 0
+       round_robin        estatico          0/  620  máximo = 0  células = 0
+       worst_fit          estatico          0/  620  máximo = 0  células = 0
+       wsnb               estatico          0/  620  máximo = 0  células = 0
+     Os oito estáticos ficam em zero na campanha canônica inteira. A
+     proposição (a) sobrevive, e sobre uma população maior que a antiga.
+
+  -- (b) rede restrita contra a base, sementes 42-51 dos dois lados --
+     44 contrastes (4 pares de células × 11 algoritmos)
+     casos em que a sobrealocação SURGE sob rede restrita (base = 0, net100 > 0): 0
+     casos em que o máximo PIORA sob rede restrita: 0
+     estáticos sob rede restrita com indicador > 0: 0 de 320 execuções (o '0/320' do número antigo tem exatamente este denominador)
+     Nenhum contraste piora: a proposição (b) sobrevive na forma forte,
+     que é sobre o máximo e não sobre a média.
+
+== artefatos escritos ==
+  a16_sobrealocacao_por_algoritmo.csv
+  a16_net100_x_base.csv

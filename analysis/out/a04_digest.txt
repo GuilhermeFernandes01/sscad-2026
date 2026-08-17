@@ -1,0 +1,47 @@
+== 0. Escopo dos dados ==
+  run-010-fase1-canonica-seeds42-51: 1760 execuções, 16 células
+  run-011-fase23-canonica-seeds42-51: 1100 execuções, 10 células
+  run-012-em2021-canonica-seeds42-51: 440 execuções, 4 células
+  run-013-fase1-canonica-seeds52-71: 3520 execuções, 16 células
+  total: 6820 execuções, 30 células, 11 algoritmos
+  n_vms por célula, lido do config.yaml congelado: az-anticorr-alta=10000, az-anticorr-folgada=2000, az-em2021-alta=10000, az-em2021-folgada=2000, az-flat-alta=10000, az-flat-folgada=2000, az-realjan-alta=10000, az-realjan-folgada=2000, az-realjun-alta=10000, az-realjun-folgada=2000, geo3-az-realjun-folgada=2000, geo3-go-realjun-folgada=2000, go-anticorr-alta=9000, go-anticorr-folgada=2000, go-em2021-alta=9000, go-em2021-folgada=2000, go-flat-alta=9000, go-flat-folgada=2000, go-realjan-alta=9000, go-realjan-folgada=2000, go-realjun-alta=9000, go-realjun-folgada=2000, hetcap-az-anticorr-folgada=2000, hetcap-az-realjun-folgada=2000, net100-az-anticorr-folgada=2000, net100-az-realjun-alta=10000, net100-az-realjun-folgada=2000, net100-go-realjun-folgada=2000, pue-az-realjun-folgada=2000, pue-go-realjun-folgada=2000
+
+== A-04. Electricity Maps 2021 contra perfil sintético realjun ==
+  4 pares de células; n por célula: az-em2021-alta=10, az-realjun-alta=30, az-em2021-folgada=10, az-realjun-folgada=30, go-em2021-alta=10, go-realjun-alta=30, go-em2021-folgada=10, go-realjun-folgada=30
+  piso do teste exato: n=10 -> 0.001953125 (Holm m=3: 0.00585938); n=30 -> 1.862645149e-09 (Holm m=3: 5.58794e-09)
+  células destas oito com degenerescência estrutural: nenhuma [origem: critique-checks/alocacao-identica/out/criterio-a-priori.txt]
+
+  -- direção, 12 contrastes (3 migradores x 4 células) --
+     direção preservada entre real e sintético (ambos com n=10): 10/12
+     inversões de sinal propriamente ditas: 0/12
+     contrastes com diferença média exatamente nula em um dos lados: 2/12 — não contam como direção preservada nem como inversão
+       az-em2021-folgada    follow_renewables  real -5.025% (contraste)  sintético(10) +0.000% (empate_empirico)
+       go-em2021-folgada    follow_renewables  real -7.297% (contraste)  sintético(10) +0.000% (empate_empirico)
+
+  -- significância sob Holm m=3 --
+     PAREADA POR PODER (n=10 dos dois lados), que é a comparação de destaque:
+       real: 11/12   sintético: 10/12
+     ASSIMÉTRICA (real n=10 contra sintético n=30), reportada para registro:
+       real: 11/12   sintético: 10/12
+     contrastes do lado sintético cuja significância muda só por ir de 10 para 30 sementes: 0
+     Essa contagem é a medida direta do confundimento: onde ela muda, a
+     contagem 'x de 12' estaria medindo poder, não perfil.
+     Deu zero. O confundimento era uma ameaça real ao desenho e não se
+     materializou NESTES doze contrastes: as duas versões coincidem, e a
+     diferença entre real e sintético não é atribuível ao tamanho da
+     amostra. Isso vale só aqui — o pareamento continua obrigatório em
+     qualquer outra comparação entre células de n diferente.
+
+  -- τ_b entre o ranking dos 11 algoritmos, real contra sintético --
+     az-em2021-alta       τ_b(10) = +1.0000   τ_b(30) = +0.9636   1º: follow_renewables vs follow_renewables
+     az-em2021-folgada    τ_b(10) = +0.8441   τ_b(30) = +0.8074   1º: followme_s vs followme_s
+     go-em2021-alta       τ_b(10) = +0.8909   τ_b(30) = +0.9273   1º: follow_renewables vs follow_renewables
+     go-em2021-folgada    τ_b(10) = +0.8074   τ_b(30) = +0.8074   1º: follow_renewables vs followme_s  [TROCA]
+     τ_b(10): mínimo 0.8074, máximo 1.0000
+     células em que o primeiro colocado troca: 1/4
+     Os p-valores de τ são descritivos e NÃO corrigidos: nenhuma afirmação
+     do artigo depende de 'τ significativamente diferente de zero'.
+
+== artefatos escritos ==
+  a04_contrastes_pareados.csv
+  a04_tau_ranking.csv

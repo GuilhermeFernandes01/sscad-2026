@@ -1,0 +1,5 @@
+celula,referencia,comparado,metrica,n_pares,n_pares_nao_nulos,media_referencia,media_comparado,dif_pct,p_tost_bruto,nota,piso_p_unilateral_exato,p_tost_holm4,equivalente_bruto,equivalente_holm4,equivalente
+az-flat-alta,lowest_carbon_dc,best_fit,total_gco2,30,30,68593.86753662648,68571.89107494985,-0.03203852248876148,9.313225746154785e-10,teste,9.313225746154785e-10,3.725290298461914e-09,True,True,True
+az-flat-alta,lowest_carbon_dc,ffd,total_gco2,30,30,68593.86753662648,68649.26532476117,0.08076201287981653,9.313225746154785e-10,teste,9.313225746154785e-10,3.725290298461914e-09,True,True,True
+go-flat-alta,lowest_carbon_dc,best_fit,total_gco2,30,30,68548.19813475943,68791.34783345669,0.35471347944004816,4.6566128730773926e-09,teste,9.313225746154785e-10,5.587935447692871e-09,True,True,True
+go-flat-alta,lowest_carbon_dc,ffd,total_gco2,30,30,68548.19813475943,68679.98494979856,0.19225423661764074,2.7939677238464355e-09,teste,9.313225746154785e-10,5.587935447692871e-09,True,True,True

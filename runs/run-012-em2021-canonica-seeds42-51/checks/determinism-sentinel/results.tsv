@@ -1,0 +1,5 @@
+celula	decisions_jsonl	metrics_cientificas	resultado
+az-em2021-alta	identico_byte_a_byte	identicas_cols_1-10	DETERMINISTICO
+go-em2021-alta	identico_byte_a_byte	identicas_cols_1-10	DETERMINISTICO
+az-em2021-folgada	identico_byte_a_byte	identicas_cols_1-10	DETERMINISTICO
+go-em2021-folgada	identico_byte_a_byte	identicas_cols_1-10	DETERMINISTICO

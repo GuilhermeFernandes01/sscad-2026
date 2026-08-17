@@ -1,0 +1,7 @@
+celula,recorte,melhor_ca,melhor_gb,vantagem_pct,p_bruto,r,n
+az-realjun-folgada,base_n_cheio,followme_s,first_fit,58.742254855254025,1.862645149230957e-09,-1.0,30
+az-realjun-folgada,base_42_51,followme_s,first_fit,58.37159862632267,0.001953125,-1.0,10
+geo3-az-realjun-folgada,geo3,followme_s,first_fit,2.895157312008516,0.01953125,-0.8181818181818182,10
+go-realjun-folgada,base_n_cheio,followme_s,ffd,65.99020801474988,1.862645149230957e-09,-1.0,30
+go-realjun-folgada,base_42_51,followme_s,ffd,65.88556335451405,0.001953125,-1.0,10
+geo3-go-realjun-folgada,geo3,followme_s,ffd,6.395024955546245,0.001953125,-1.0,10

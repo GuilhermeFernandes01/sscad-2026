@@ -1,0 +1,32 @@
+== 0. Escopo dos dados ==
+  run-010-fase1-canonica-seeds42-51: 1760 execuções, 16 células
+  run-011-fase23-canonica-seeds42-51: 1100 execuções, 10 células
+  run-012-em2021-canonica-seeds42-51: 440 execuções, 4 células
+  run-013-fase1-canonica-seeds52-71: 3520 execuções, 16 células
+  total: 6820 execuções, 30 células, 11 algoritmos
+  n_vms por célula, lido do config.yaml congelado: az-anticorr-alta=10000, az-anticorr-folgada=2000, az-em2021-alta=10000, az-em2021-folgada=2000, az-flat-alta=10000, az-flat-folgada=2000, az-realjan-alta=10000, az-realjan-folgada=2000, az-realjun-alta=10000, az-realjun-folgada=2000, geo3-az-realjun-folgada=2000, geo3-go-realjun-folgada=2000, go-anticorr-alta=9000, go-anticorr-folgada=2000, go-em2021-alta=9000, go-em2021-folgada=2000, go-flat-alta=9000, go-flat-folgada=2000, go-realjan-alta=9000, go-realjan-folgada=2000, go-realjun-alta=9000, go-realjun-folgada=2000, hetcap-az-anticorr-folgada=2000, hetcap-az-realjun-folgada=2000, net100-az-anticorr-folgada=2000, net100-az-realjun-alta=10000, net100-az-realjun-folgada=2000, net100-go-realjun-folgada=2000, pue-az-realjun-folgada=2000, pue-go-realjun-folgada=2000
+
+== A-15. Equivalência a ±1% de lowest_carbon_dc contra best_fit e ffd, sob flat ==
+  Hipótese de interesse é a NULA: sob flat não há sinal geográfico a
+  explorar, e o alocador ciente de carbono não deveria se distinguir.
+
+  Controle interno: sob flat gCO2e = 475,0 x kWh, logo a diferença
+  percentual e o p têm de coincidir entre as duas métricas.
+    az-flat-alta   x best_fit  razao gCO2e/kWh = 475.000000  OK
+    az-flat-alta   x ffd       razao gCO2e/kWh = 475.000000  OK
+    go-flat-alta   x best_fit  razao gCO2e/kWh = 475.000000  OK
+    go-flat-alta   x ffd       razao gCO2e/kWh = 475.000000  OK
+
+  Contrastes em gCO2e (a margem de ±1% é ancorada na média de lowest_carbon_dc):
+    az-flat-alta   lowest_carbon_dc x best_fit  n=30 (nao nulos 30)  dif = -0.0320%  p bruto = 9.31323e-10  p Holm(4) = 3.72529e-09  -> EQUIVALENTE  [teste]
+    az-flat-alta   lowest_carbon_dc x ffd       n=30 (nao nulos 30)  dif = +0.0808%  p bruto = 9.31323e-10  p Holm(4) = 3.72529e-09  -> EQUIVALENTE  [teste]
+    go-flat-alta   lowest_carbon_dc x best_fit  n=30 (nao nulos 30)  dif = +0.3547%  p bruto = 4.65661e-09  p Holm(4) = 5.58794e-09  -> EQUIVALENTE  [teste]
+    go-flat-alta   lowest_carbon_dc x ffd       n=30 (nao nulos 30)  dif = +0.1923%  p bruto = 2.79397e-09  p Holm(4) = 5.58794e-09  -> EQUIVALENTE  [teste]
+    piso do p unilateral exato, por contraste: az-flat-alta/best_fit=9.31e-10, az-flat-alta/ffd=9.31e-10, go-flat-alta/best_fit=9.31e-10, go-flat-alta/ffd=9.31e-10
+
+  Veredito mecânico: 4/4 contrastes equivalentes a ±1% sob AMBAS as leituras (bruta e Holm sobre os quatro).
+  A regra de veredito foi fixada antes do cálculo, na decisão 4 do cabeçalho.
+
+== artefatos escritos ==
+  a15_equivalencia_estaticos.csv  (resultado)
+  a15_controle_kwh.csv            (controle interno, nao e resultado)

@@ -1,0 +1,37 @@
+== 0. Escopo dos dados ==
+  run-010-fase1-canonica-seeds42-51: 1760 execuções, 16 células
+  run-011-fase23-canonica-seeds42-51: 1100 execuções, 10 células
+  run-012-em2021-canonica-seeds42-51: 440 execuções, 4 células
+  run-013-fase1-canonica-seeds52-71: 3520 execuções, 16 células
+  total: 6820 execuções, 30 células, 11 algoritmos
+  n_vms por célula, lido do config.yaml congelado: az-anticorr-alta=10000, az-anticorr-folgada=2000, az-em2021-alta=10000, az-em2021-folgada=2000, az-flat-alta=10000, az-flat-folgada=2000, az-realjan-alta=10000, az-realjan-folgada=2000, az-realjun-alta=10000, az-realjun-folgada=2000, geo3-az-realjun-folgada=2000, geo3-go-realjun-folgada=2000, go-anticorr-alta=9000, go-anticorr-folgada=2000, go-em2021-alta=9000, go-em2021-folgada=2000, go-flat-alta=9000, go-flat-folgada=2000, go-realjan-alta=9000, go-realjan-folgada=2000, go-realjun-alta=9000, go-realjun-folgada=2000, hetcap-az-anticorr-folgada=2000, hetcap-az-realjun-folgada=2000, net100-az-anticorr-folgada=2000, net100-az-realjun-alta=10000, net100-az-realjun-folgada=2000, net100-go-realjun-folgada=2000, pue-az-realjun-folgada=2000, pue-go-realjun-folgada=2000
+
+== A-10 (parte b e c). Custo de usar energia como proxy de carbono ==
+  PUE = power usage effectiveness, a razão entre a energia total do data
+  center e a energia entregue à computação. As células pue-* atribuem o PUE
+  mais alto ao data center mais limpo, desacoplando energia de emissão.
+  Ambos os lados restritos às sementes 42-51 (as células pue-* têm 10).
+
+  -- (b) razão de erro do proxy --
+     az-realjun-folgada         os dois critérios escolhem followme_s: razão = 1.000 (proxy não custa nada nesta célula)
+     pue-az-realjun-folgada     energia escolhe best_fit, carbono escolhe followme_s: 18951 contra 5838 gCO2e, razão = 3.246×  p=0.001953 (não corrigido)
+     go-realjun-folgada         os dois critérios escolhem followme_s: razão = 1.000 (proxy não custa nada nesta célula)
+     pue-go-realjun-folgada     energia escolhe ffd, carbono escolhe followme_s: 10742 contra 4488 gCO2e, razão = 2.394×  p=0.001953 (não corrigido)
+
+  -- (c) invariância do ranking de emissão entre a célula pue-* e a referência --
+     controle com limiar declarado: reponderação pura da energia exige τ_b = 1,000
+     pue-az-realjun-folgada     × az-realjun-folgada     τ_b = +1.0000  [OK]
+     pue-go-realjun-folgada     × go-realjun-folgada     τ_b = +1.0000  [OK]
+
+  -- (a') τ_b entre emissão e energia, no MESMO recorte de 10 sementes --
+     (o τ_b de a10_proxy_kwh_gco2.csv usa o n de cada célula, 30 nas de
+      referência; só este recorte isola o desempate do tamanho da amostra)
+     az-realjun-folgada         τ_b = +0.8889  p=0.0001703 (não corrigido)
+     pue-az-realjun-folgada     τ_b = +0.0741  p=0.7541 (não corrigido)
+     go-realjun-folgada         τ_b = +0.9630  p=4.647e-05 (não corrigido)
+     pue-go-realjun-folgada     τ_b = +0.2593  p=0.2729 (não corrigido)
+
+== artefatos escritos ==
+  a10_razao_erro_proxy.csv
+  a10_tau_recorte_pareado.csv
+  a10_invariancia_ranking_pue.csv

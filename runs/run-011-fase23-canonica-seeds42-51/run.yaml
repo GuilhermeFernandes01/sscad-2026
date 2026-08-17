@@ -1,0 +1,101 @@
+run_id: run-011-fase23-canonica-seeds42-51
+dates: '2026-08-07'
+status: completed
+binary:
+  repo: algorithms-simgrid
+  commit: 305e2b27726305e196eea090fabc312280b39e1f
+  sha256: 36bfe40eed33c8b8cb491894acd6f63c05c13e0d7a15a6e6f7b9401246d94c6d
+seeds:
+- 42
+- 43
+- 44
+- 45
+- 46
+- 47
+- 48
+- 49
+- 50
+- 51
+algorithms:
+  placement_order:
+  - first_fit
+  - best_fit
+  - worst_fit
+  - round_robin
+  - ffd
+  - bfd
+  - lowest_carbon_dc
+  - follow_renewables
+  - wsnb
+  - followme_s
+  - cnemesis
+  migration_capable:
+  - follow_renewables
+  - followme_s
+  - cnemesis
+  source: algosim list at commit 305e2b2
+  policy_check: the algorithm.migration field of each run's manifest.json was verified
+    against the intended policy, 1100/1100 runs
+cells:
+- id: net100-az-realjun-folgada
+  yaml: configs/scenarios/fase2/geo9_azure_realjun_folgada_net100.yaml
+  status: completed
+  runs_ok: 110
+- id: net100-go-realjun-folgada
+  yaml: configs/scenarios/fase2/geo9_google_realjun_folgada_net100.yaml
+  status: completed
+  runs_ok: 110
+- id: net100-az-anticorr-folgada
+  yaml: configs/scenarios/fase2/geo9_azure_anticorr_folgada_net100.yaml
+  status: completed
+  runs_ok: 110
+- id: net100-az-realjun-alta
+  yaml: configs/scenarios/fase2/geo9_azure_realjun_alta_net100.yaml
+  status: completed
+  runs_ok: 110
+- id: geo3-az-realjun-folgada
+  yaml: configs/scenarios/fase3/geo3_azure_realjun_folgada.yaml
+  status: completed
+  runs_ok: 110
+  note: 3 DCs, 150 hosts
+- id: geo3-go-realjun-folgada
+  yaml: configs/scenarios/fase3/geo3_google_realjun_folgada.yaml
+  status: completed
+  runs_ok: 110
+  note: 3 DCs, 150 hosts; 1992-1996 of the 2000 VMs placed depending on the seed; some
+    VMs remain unplaced in this cell
+- id: hetcap-az-realjun-folgada
+  yaml: configs/scenarios/fase3/geo9hetcap_azure_realjun_folgada.yaml
+  status: completed
+  runs_ok: 110
+  note: heterogeneous capacity across DCs
+- id: hetcap-az-anticorr-folgada
+  yaml: configs/scenarios/fase3/geo9hetcap_azure_anticorr_folgada.yaml
+  status: completed
+  runs_ok: 110
+- id: pue-az-realjun-folgada
+  yaml: configs/scenarios/fase3/geo9pue_azure_realjun_folgada.yaml
+  status: completed
+  runs_ok: 110
+  note: PUE remapped across DCs
+- id: pue-go-realjun-folgada
+  yaml: configs/scenarios/fase3/geo9pue_google_realjun_folgada.yaml
+  status: completed
+  runs_ok: 110
+command_template: algosim run <scenario.yaml> --placement <policy> --migration <policy> --seed
+  <seed> --output <dir>
+outputs:
+  processed: processed/
+  checksums: checks/SHA256SUMS.txt
+  determinism_sentinels: checks/determinism-sentinel/results.tsv
+note: checks/SHA256SUMS.txt is the frozen per-file commitment computed over the full run directory,
+  including raw/ (not distributed) and internal check reports (not distributed); verify what
+  is present or re-executed with sha256sum -c --ignore-missing
+environment:
+  os_kernel: 7.0.0-28-generic
+  cpu: AMD Ryzen 7 5700X 8-Core Processor
+  cores: 16
+  gxx: g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+  cmake: cmake version 3.28.3
+  python: Python 3.12.3
+  simgrid: 4.1.1

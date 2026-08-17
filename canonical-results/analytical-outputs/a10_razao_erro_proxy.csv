@@ -1,0 +1,5 @@
+celula,papel,par,argmin_kwh,argmin_gco2,argmin_unico,criterios_divergem,gco2_do_argmin_kwh,gco2_do_argmin_gco2,razao_erro_proxy,p_bruto_wsr,r_rank_biserial,tau_b_gco2_kwh_42a51,p_nao_corrigido
+az-realjun-folgada,referencia,pue-az-realjun-folgada,followme_s,followme_s,True,False,5424.070609995839,5424.070609995839,1.0,,,0.8888888888888888,0.00017029377577951654
+pue-az-realjun-folgada,pue_invertido,pue-az-realjun-folgada,best_fit,followme_s,True,True,18951.334342063354,5837.89678626827,3.2462606030720047,0.001953125,1.0,0.07407407407407407,0.754062847918717
+go-realjun-folgada,referencia,pue-go-realjun-folgada,followme_s,followme_s,True,False,4034.706452589472,4034.706452589472,1.0,,,0.9629629629629629,4.6465836804030796e-05
+pue-go-realjun-folgada,pue_invertido,pue-go-realjun-folgada,ffd,followme_s,True,True,10741.819953648037,4487.505327990853,2.3937174818814904,0.001953125,1.0,0.25925925925925924,0.2728585025608301

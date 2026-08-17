@@ -1,0 +1,13 @@
+celula,vencedor_kwh,vencedor_gco2,coincide,empate_kwh,empate_gco2,razao_erro_proxy,erro_proxy_pct
+az-realjun-folgada,followme_s,followme_s,True,False,False,,
+az-realjun-alta,follow_renewables,follow_renewables,True,False,False,,
+az-flat-folgada,followme_s,followme_s,True,False,False,,
+az-flat-alta,cnemesis,cnemesis,True,False,False,,
+az-anticorr-folgada,first_fit,followme_s,False,False,False,1.607644545989478,60.76445459894779
+az-anticorr-alta,follow_renewables,follow_renewables,True,False,False,,
+go-realjun-folgada,followme_s,followme_s,True,False,False,,
+go-realjun-alta,follow_renewables,follow_renewables,True,False,False,,
+go-flat-folgada,ffd,ffd,True,False,False,,
+go-flat-alta,followme_s,followme_s,True,False,False,,
+go-anticorr-folgada,ffd,followme_s,False,False,False,1.3946659108434514,39.46659108434514
+go-anticorr-alta,follow_renewables,follow_renewables,True,False,False,,

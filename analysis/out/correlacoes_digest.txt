@@ -1,0 +1,80 @@
+== insumo: out/rankings_postos_medios.csv (990 linhas, 30 células, 3 métricas, 11 algoritmos) ==
+
+== A-14. Controle negativo flat: τ_b(gCO2e, kWh) deve ser exatamente 1,000 ==
+  Sob perfil flat a intensidade é constante; os dois rankings são o mesmo
+  ranking. Desvio aqui é defeito do pipeline, não resultado.
+  az-flat-alta           τ_b = 1.000000  OK
+  az-flat-folgada        τ_b = 1.000000  OK
+  go-flat-alta           τ_b = 1.000000  OK
+  go-flat-folgada        τ_b = 1.000000  OK
+
+== A-10. τ_b entre ranking por gCO2e e ranking por kWh, por célula ==
+  A afirmação do artigo é que sob PUE invertido a correlação desaba, ou seja,
+  que minimizar energia deixa de ser proxy de minimizar carbono.
+  go-anticorr-folgada        τ_b = +0.0370
+  pue-az-realjun-folgada     τ_b = +0.0741 [PUE]
+  pue-go-realjun-folgada     τ_b = +0.2593 [PUE]
+  net100-az-anticorr-folgada τ_b = +0.2963
+  az-anticorr-folgada        τ_b = +0.3333
+  geo3-go-realjun-folgada    τ_b = +0.4545
+  hetcap-az-anticorr-folgada τ_b = +0.5556
+  go-anticorr-alta           τ_b = +0.5636
+  az-anticorr-alta           τ_b = +0.6727
+  net100-az-realjun-alta     τ_b = +0.7455
+  go-realjan-alta            τ_b = +0.7818
+  go-realjun-alta            τ_b = +0.7818
+  go-em2021-folgada          τ_b = +0.8182
+  net100-az-realjun-folgada  τ_b = +0.8519
+  az-realjan-folgada         τ_b = +0.8519
+  az-realjun-folgada         τ_b = +0.8519
+  az-em2021-folgada          τ_b = +0.8545
+  hetcap-az-realjun-folgada  τ_b = +0.8909
+  go-em2021-alta             τ_b = +0.8909
+  go-realjan-folgada         τ_b = +0.9259
+  go-realjun-folgada         τ_b = +0.9259
+  az-realjun-alta            τ_b = +0.9273
+  az-realjan-alta            τ_b = +0.9273
+  net100-go-realjun-folgada  τ_b = +0.9630
+  geo3-az-realjun-folgada    τ_b = +0.9636
+  az-em2021-alta             τ_b = +0.9636
+  az-flat-folgada            τ_b = +1.0000 [flat]
+  az-flat-alta               τ_b = +1.0000 [flat]
+  go-flat-folgada            τ_b = +1.0000 [flat]
+  go-flat-alta               τ_b = +1.0000 [flat]
+
+== A-07. Estabilidade do ranking de gCO2e entre pares de células (τ_b) ==
+  Um τ mediano alto com mínimo baixo significa ranking estável na maioria
+  das configurações e instável em algumas — que é uma afirmação diferente,
+  e mais fraca, do que 'o ranking é estável'.
+  435 pares de células
+  τ_b mediana = 0.7818; mínimo = 0.1122; máximo = 1.0000; 1o quartil = 0.6364
+  cinco pares menos concordantes:
+    az-flat-folgada            x geo3-go-realjun-folgada    τ_b = +0.1122
+    az-flat-folgada            x go-anticorr-alta           τ_b = +0.1496
+    az-flat-folgada            x go-em2021-folgada          τ_b = +0.1496
+    az-flat-folgada            x go-em2021-alta             τ_b = +0.2244
+    go-anticorr-alta           x go-flat-folgada            τ_b = +0.2618
+
+== A-20. ρ de Spearman entre células azure e google correspondentes ==
+  az-flat-folgada        x go-flat-folgada        ρ = +0.6759  τ_b = +0.5769
+  az-flat-alta           x go-flat-alta           ρ = +0.7685  τ_b = +0.6538
+  az-anticorr-alta       x go-anticorr-alta       ρ = +0.8636  τ_b = +0.7818
+  az-em2021-folgada      x go-em2021-folgada      ρ = +0.9000  τ_b = +0.7455
+  az-anticorr-folgada    x go-anticorr-folgada    ρ = +0.9269  τ_b = +0.8519
+  az-em2021-alta         x go-em2021-alta         ρ = +0.9636  τ_b = +0.8909
+  az-realjan-alta        x go-realjan-alta        ρ = +0.9818  τ_b = +0.9273
+  az-realjun-alta        x go-realjun-alta        ρ = +0.9818  τ_b = +0.9273
+  az-realjan-folgada     x go-realjan-folgada     ρ = +0.9909  τ_b = +0.9630
+  az-realjun-folgada     x go-realjun-folgada     ρ = +0.9909  τ_b = +0.9630
+  células azure sem par google (0): nenhuma
+  células fora do pareamento az/go (10): geo3-az-realjun-folgada, geo3-go-realjun-folgada, hetcap-az-anticorr-folgada, hetcap-az-realjun-folgada, net100-az-anticorr-folgada, net100-az-realjun-alta, net100-az-realjun-folgada, net100-go-realjun-folgada, pue-az-realjun-folgada, pue-go-realjun-folgada
+  Estas ficam FORA da A-20 por construção, não por seleção de resultado.
+
+== artefatos escritos ==
+  a14_controle_flat.csv
+  a10_proxy_kwh_gco2.csv
+  a07_estabilidade_ranking.csv
+  a20_azure_x_google.csv
+
+Todos os p-valores acima são NÃO corrigidos e descritivos: nenhuma afirmação
+do artigo depende de significância de correlação. Ver decisão 3 no cabeçalho.

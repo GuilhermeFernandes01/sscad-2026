@@ -1,0 +1,39 @@
+criterio_a_priori.py — degenerescência estrutural de (follow_renewables, lowest_carbon_dc) por célula
+limiar = 400.0 gCO2/kWh; critério A é suficiente, não necessário
+
+[run-010-fase1-canonica-seeds42-51]
+  az-anticorr-alta               9 DCs, 24 ticks: empate NAO estrutural — 24/24 ticks com DCs sujos e limpos simultaneamente
+  az-anticorr-folgada            9 DCs, 24 ticks: empate NAO estrutural — 24/24 ticks com DCs sujos e limpos simultaneamente
+  az-flat-alta                   9 DCs, 24 ticks: DEGENERADO POR CONSTRUCAO NO CENARIO — migrate() == {} em todos os ticks
+  az-flat-folgada                9 DCs, 24 ticks: DEGENERADO POR CONSTRUCAO NO CENARIO — migrate() == {} em todos os ticks
+  az-realjan-alta                9 DCs, 24 ticks: empate NAO estrutural — 24/24 ticks com DCs sujos e limpos simultaneamente
+  az-realjan-folgada             9 DCs, 24 ticks: empate NAO estrutural — 24/24 ticks com DCs sujos e limpos simultaneamente
+  az-realjun-alta                9 DCs, 24 ticks: empate NAO estrutural — 24/24 ticks com DCs sujos e limpos simultaneamente
+  az-realjun-folgada             9 DCs, 24 ticks: empate NAO estrutural — 24/24 ticks com DCs sujos e limpos simultaneamente
+  go-anticorr-alta               9 DCs, 24 ticks: empate NAO estrutural — 24/24 ticks com DCs sujos e limpos simultaneamente
+  go-anticorr-folgada            9 DCs, 24 ticks: empate NAO estrutural — 24/24 ticks com DCs sujos e limpos simultaneamente
+  go-flat-alta                   9 DCs, 24 ticks: DEGENERADO POR CONSTRUCAO NO CENARIO — migrate() == {} em todos os ticks
+  go-flat-folgada                9 DCs, 24 ticks: DEGENERADO POR CONSTRUCAO NO CENARIO — migrate() == {} em todos os ticks
+  go-realjan-alta                9 DCs, 24 ticks: empate NAO estrutural — 24/24 ticks com DCs sujos e limpos simultaneamente
+  go-realjan-folgada             9 DCs, 24 ticks: empate NAO estrutural — 24/24 ticks com DCs sujos e limpos simultaneamente
+  go-realjun-alta                9 DCs, 24 ticks: empate NAO estrutural — 24/24 ticks com DCs sujos e limpos simultaneamente
+  go-realjun-folgada             9 DCs, 24 ticks: empate NAO estrutural — 24/24 ticks com DCs sujos e limpos simultaneamente
+
+[run-011-fase23-canonica-seeds42-51]
+  geo3-az-realjun-folgada        3 DCs, 24 ticks: empate NAO estrutural — 24/24 ticks com DCs sujos e limpos simultaneamente
+  geo3-go-realjun-folgada        3 DCs, 24 ticks: empate NAO estrutural — 24/24 ticks com DCs sujos e limpos simultaneamente
+  hetcap-az-anticorr-folgada     9 DCs, 24 ticks: empate NAO estrutural — 24/24 ticks com DCs sujos e limpos simultaneamente
+  hetcap-az-realjun-folgada      9 DCs, 24 ticks: empate NAO estrutural — 24/24 ticks com DCs sujos e limpos simultaneamente
+  net100-az-anticorr-folgada     9 DCs, 24 ticks: empate NAO estrutural — 24/24 ticks com DCs sujos e limpos simultaneamente
+  net100-az-realjun-alta         9 DCs, 24 ticks: empate NAO estrutural — 24/24 ticks com DCs sujos e limpos simultaneamente
+  net100-az-realjun-folgada      9 DCs, 24 ticks: empate NAO estrutural — 24/24 ticks com DCs sujos e limpos simultaneamente
+  net100-go-realjun-folgada      9 DCs, 24 ticks: empate NAO estrutural — 24/24 ticks com DCs sujos e limpos simultaneamente
+  pue-az-realjun-folgada         9 DCs, 24 ticks: empate NAO estrutural — 24/24 ticks com DCs sujos e limpos simultaneamente
+  pue-go-realjun-folgada         9 DCs, 24 ticks: empate NAO estrutural — 24/24 ticks com DCs sujos e limpos simultaneamente
+
+[run-012-em2021-canonica-seeds42-51]
+  az-em2021-alta                 9 DCs, 24 ticks: empate NAO estrutural — 24/24 ticks com DCs sujos e limpos simultaneamente
+  az-em2021-folgada              9 DCs, 24 ticks: empate NAO estrutural — 24/24 ticks com DCs sujos e limpos simultaneamente
+  go-em2021-alta                 9 DCs, 24 ticks: empate NAO estrutural — 24/24 ticks com DCs sujos e limpos simultaneamente
+  go-em2021-folgada              9 DCs, 24 ticks: empate NAO estrutural — 24/24 ticks com DCs sujos e limpos simultaneamente
+

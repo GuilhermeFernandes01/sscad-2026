@@ -1,0 +1,75 @@
+# Celula Fase 3 (nao editar a mao: sha256 registrado em runs/*/env/inputs-sha256.txt)
+# celula=geo3_azure_realjun_folgada base=geo_9dc_azure.yaml
+# subconjunto de 3 DCs contrastantes: paris, canberra, virginia (50 hosts/DC = 150 hosts)
+# n_vms NAO recalibrado: a pressao ~3x sobre 3 DCs e parte do proprio cenario
+#   paris: media anual 52.60 gCO2/kWh
+#   canberra: media anual 666.97 gCO2/kWh
+#   virginia: media anual 342.80 gCO2/kWh
+# Scenario B-Azure: Geo-distributed 9-DC federation with Azure 2020 trace workload
+#
+# Same infrastructure and carbon traces as geo_9dc.yaml, but the workload is
+# derived from the Azure Packing 2020 production trace (Vasconcelos et al.
+# SMARTGREENS 2022 reference). First 2000 VMs subsampled, demands capped at
+# the largest host capacity (170240 MIPS).
+
+scenario:
+  name: geo3_azure_realjun_folgada
+  duration_seconds: 14400
+  dt_seconds: 60
+  migration_interval_seconds: 600
+  seed: 42
+  start_datetime: "2020-06-01T00:00:00"
+
+topology:
+  platform_xml: ""
+
+datacenters:
+  - id: canberra
+    name: "Canberra"
+    latitude: -35.28
+    longitude: 149.13
+    pue: 1.405
+    carbon_series_id: canberra
+    host_groups:
+      - { template: { cpu_cores: 16, cpu_capacity_mips: 42560,  ram_mb: 65536,  net_bw_mbps: 10000, power_idle_w: 35,  power_peak_w: 50 },  count: 25 }
+      - { template: { cpu_cores: 32, cpu_capacity_mips: 85120,  ram_mb: 131072, net_bw_mbps: 10000, power_idle_w: 70,  power_peak_w: 100 }, count: 15 }
+      - { template: { cpu_cores: 64, cpu_capacity_mips: 170240, ram_mb: 262144, net_bw_mbps: 10000, power_idle_w: 140, power_peak_w: 200 }, count: 10 }
+
+  - id: paris
+    name: "Paris"
+    latitude: 48.85
+    longitude: 2.35
+    pue: 1.20
+    carbon_series_id: paris
+    host_groups:
+      - { template: { cpu_cores: 16, cpu_capacity_mips: 42560,  ram_mb: 65536,  net_bw_mbps: 10000, power_idle_w: 35,  power_peak_w: 50 },  count: 25 }
+      - { template: { cpu_cores: 32, cpu_capacity_mips: 85120,  ram_mb: 131072, net_bw_mbps: 10000, power_idle_w: 70,  power_peak_w: 100 }, count: 15 }
+      - { template: { cpu_cores: 64, cpu_capacity_mips: 170240, ram_mb: 262144, net_bw_mbps: 10000, power_idle_w: 140, power_peak_w: 200 }, count: 10 }
+
+  - id: virginia
+    name: "Virginia"
+    latitude: 37.43
+    longitude: -78.65
+    pue: 1.40
+    carbon_series_id: virginia
+    host_groups:
+      - { template: { cpu_cores: 16, cpu_capacity_mips: 42560,  ram_mb: 65536,  net_bw_mbps: 10000, power_idle_w: 35,  power_peak_w: 50 },  count: 25 }
+      - { template: { cpu_cores: 32, cpu_capacity_mips: 85120,  ram_mb: 131072, net_bw_mbps: 10000, power_idle_w: 70,  power_peak_w: 100 }, count: 15 }
+      - { template: { cpu_cores: 64, cpu_capacity_mips: 170240, ram_mb: 262144, net_bw_mbps: 10000, power_idle_w: 140, power_peak_w: 200 }, count: 10 }
+
+carbon:
+  - { series_id: canberra,      kind: csv, path: data/carbon/canberra.csv,      step_seconds: 3600 }
+  - { series_id: paris,         kind: csv, path: data/carbon/paris.csv,         step_seconds: 3600 }
+  - { series_id: virginia,      kind: csv, path: data/carbon/virginia.csv,      step_seconds: 3600 }
+
+workload:
+  kind: trace_file
+  path: data/workloads/azure_2020.txt
+  format: cnemesis
+  n_vms: 2000
+  ram_mb: 8192
+  image_size_mb: 8192
+  dirty_rate_mbps: 40
+  lifetime_mean_seconds: 7200
+  max_demand_mips: 170000
+  rescale_arrival_seconds: 0

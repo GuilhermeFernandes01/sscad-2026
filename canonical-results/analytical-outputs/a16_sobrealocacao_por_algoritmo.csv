@@ -1,0 +1,12 @@
+algoritmo,classe,execucoes,execucoes_com_sobrealocacao,maximo,celulas_com_sobrealocacao
+best_fit,estatico,620,0,0,0
+bfd,estatico,620,0,0,0
+cnemesis,com_migracao,620,479,18477,24
+ffd,estatico,620,0,0,0
+first_fit,estatico,620,0,0,0
+follow_renewables,com_migracao,620,249,44975,13
+followme_s,com_migracao,620,594,9862,30
+lowest_carbon_dc,estatico,620,0,0,0
+round_robin,estatico,620,0,0,0
+worst_fit,estatico,620,0,0,0
+wsnb,estatico,620,0,0,0

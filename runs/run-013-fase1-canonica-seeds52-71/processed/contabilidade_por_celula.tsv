@@ -1,0 +1,17 @@
+celula	execucoes	parede_total_s	parede_mediana_s	parede_max_s	cpu_total_s	pico_memoria_max_kb	retentativas	falhas
+az-anticorr-alta	220	39833.41	24.69	1558.56	39681.87	198332.0	0	0
+az-anticorr-folgada	220	366.90	1.62	3.43	363.30	74256.0	0	0
+az-flat-alta	220	11431.37	22.16	512.99	11387.35	139980.0	0	0
+az-flat-folgada	220	322.87	1.44	2.72	318.46	59260.0	0	0
+az-realjan-alta	220	59333.56	23.62	2400.56	59154.00	196172.0	0	0
+az-realjan-folgada	220	330.11	1.46	2.76	325.70	70836.0	0	0
+az-realjun-alta	220	60304.88	25.00	2382.43	60064.67	195692.0	0	0
+az-realjun-folgada	220	407.20	1.85	2.89	402.07	72628.0	0	0
+go-anticorr-alta	220	62912.18	24.70	2046.85	62701.32	158164.0	0	0
+go-anticorr-folgada	220	306.30	1.30	5.13	303.08	51144.0	0	0
+go-flat-alta	220	8719.16	21.66	333.62	8693.59	110932.0	0	0
+go-flat-folgada	220	300.18	1.30	3.02	296.93	49264.0	0	0
+go-realjan-alta	220	87854.03	23.13	2716.29	87634.75	162864.0	0	0
+go-realjan-folgada	220	301.91	1.31	3.09	298.57	49552.0	0	0
+go-realjun-alta	220	85803.80	22.20	2921.30	85575.05	162796.0	0	0
+go-realjun-folgada	220	286.76	1.26	2.89	283.12	49068.0	0	0

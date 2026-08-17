@@ -1,0 +1,220 @@
+== extracao_nivel3.py — afirmações restantes do nível 3 ==
+
+== 0. Escopo dos dados ==
+  run-010-fase1-canonica-seeds42-51: 1760 execuções, 16 células
+  run-011-fase23-canonica-seeds42-51: 1100 execuções, 10 células
+  run-012-em2021-canonica-seeds42-51: 440 execuções, 4 células
+  run-013-fase1-canonica-seeds52-71: 3520 execuções, 16 células
+  total: 6820 execuções, 30 células, 11 algoritmos
+  n_vms por célula, lido do config.yaml congelado: az-anticorr-alta=10000, az-anticorr-folgada=2000, az-em2021-alta=10000, az-em2021-folgada=2000, az-flat-alta=10000, az-flat-folgada=2000, az-realjan-alta=10000, az-realjan-folgada=2000, az-realjun-alta=10000, az-realjun-folgada=2000, geo3-az-realjun-folgada=2000, geo3-go-realjun-folgada=2000, go-anticorr-alta=9000, go-anticorr-folgada=2000, go-em2021-alta=9000, go-em2021-folgada=2000, go-flat-alta=9000, go-flat-folgada=2000, go-realjan-alta=9000, go-realjan-folgada=2000, go-realjun-alta=9000, go-realjun-folgada=2000, hetcap-az-anticorr-folgada=2000, hetcap-az-realjun-folgada=2000, net100-az-anticorr-folgada=2000, net100-az-realjun-alta=10000, net100-az-realjun-folgada=2000, net100-go-realjun-folgada=2000, pue-az-realjun-folgada=2000, pue-go-realjun-folgada=2000
+
+  recorte de 22 configurações não redundantes conferido: 30 células - 4 `realjan` - 4 `em2021` = 22
+  recorte de 12 configurações de referência: 12
+
+
+== A-01 — ganho máximo com migração sob carga alta e sinal variável ==
+antigo: -4,76% e -9,84% (Azure); -1,27% e -1,71% (Google); p_holm <= 0,012; r = -1,00 em três; BCa [-3,167; -2,607] em az-realjun-alta
+  az-realjun-alta: n=30 dif=-5,6777% p_holm3=5.588e-09 r=-1,000 BCa=[-3586,0; -3283,1] gCO2e
+      recorte 42-51 (n=10): dif=-5,7646% p_bruto=1.953e-03 r=-1,000
+  az-anticorr-alta: n=30 dif=-11,5796% p_holm3=5.588e-09 r=-1,000 BCa=[-5835,2; -5450,7] gCO2e
+      recorte 42-51 (n=10): dif=-11,4114% p_bruto=1.953e-03 r=-1,000
+  go-realjun-alta: n=30 dif=-1,9316% p_holm3=5.588e-09 r=-1,000 BCa=[-1348,3; -1033,4] gCO2e
+      recorte 42-51 (n=10): dif=-1,9745% p_bruto=1.953e-03 r=-1,000
+  go-anticorr-alta: n=30 dif=-2,3983% p_holm3=5.588e-09 r=-1,000 BCa=[-1416,9; -1000,9] gCO2e
+      recorte 42-51 (n=10): dif=-2,5164% p_bruto=1.953e-03 r=-1,000
+  piso do teste exato: n=30 -> 1.863e-09; n=10 -> 1.953e-03
+
+
+== A-02 — equivalência sob WAN de 100 Mb/s em az-realjun-alta ==
+antigo: -0,08% a -0,10%; TOST p = 0,00098
+  cnemesis: dif=-0,0266% p_tost=9.766e-04 equivalente=True nota=teste
+  follow_renewables: dif=-0,0966% p_tost=9.766e-04 equivalente=True nota=teste
+  followme_s: dif=-0,1439% p_tost=9.766e-04 equivalente=True nota=teste
+  equivalentes dentro de +-1%: 3/3
+
+
+== A-03 — cnemesis supera lowest_carbon_dc em 16 das 22 configurações ==
+antigo: 16/22 significativas; go-anticorr-alta inverte para +0,20% (não significativo)
+  significativas E favoráveis a cnemesis: 18/22
+  significativas E CONTRA cnemesis: 1/22 -> geo3-go-realjun-folgada +3,1175%
+  não significativas: 3/22 -> go-anticorr-alta -0,2520% p=0.135; go-flat-alta -0,0788% p=0.238; net100-az-realjun-alta -0,0266% p=0.557
+  go-anticorr-alta: dif=-0,2520% BCa=[-261,5; 2,5] p_holm3=0.135
+  geo3-go-realjun-folgada: dif=+3,1175% BCa=[184,7; 413,5] p_holm3=0.00586
+
+
+== A-06 — vantagem ciente de carbono com 3 data centers ==
+antigo: 60,99% -> 8,33% (Azure, p = 0,0020); 66,97% -> 0,77% (Google, p = 0,63)
+  az-realjun-folgada (n=30): vantagem=+58,7423% [followme_s x first_fit] p=1.863e-09
+  az-realjun-folgada recorte 42-51 (n=10): vantagem=+58,3716% [followme_s x first_fit] p=1.953e-03
+  geo3-az-realjun-folgada (n=10): vantagem=+2,8952% [followme_s x first_fit] p=1.953e-02 r=-0,818 -> significativa a 0,05: True
+  go-realjun-folgada (n=30): vantagem=+65,9902% [followme_s x ffd] p=1.863e-09
+  go-realjun-folgada recorte 42-51 (n=10): vantagem=+65,8856% [followme_s x ffd] p=1.953e-03
+  geo3-go-realjun-folgada (n=10): vantagem=+6,3950% [followme_s x ffd] p=1.953e-03 r=-1,000 -> significativa a 0,05: True
+
+
+== A-07 — estabilidade do ranking entre configurações ==
+antigo: tau mediana 0,771, mínimo 0,299 nas 22 configurações; 13 pares-testemunha (8 só entre estáticos); PUE tau=1,000; net100 realjun folgada 1,000, anticorr-folgada 0,926, carga alta 0,964; geo3 0,697; hetcap 0,881/0,963
+  pares de células: 231 (esperado C(22,2) = 231)
+  tau_b: mediana=0,7171 mínimo=0,1122 máximo=1,0000
+  cinco menores: az-flat-folgada×geo3-go-realjun-folgada=0,112; az-flat-folgada×go-anticorr-alta=0,150; go-anticorr-alta×go-flat-folgada=0,262; az-flat-folgada×net100-az-anticorr-folgada=0,264; az-flat-folgada×az-realjun-alta=0,299
+  todas as 435 combinações das 30 células: mediana=0,7818 mínimo=0,1122
+  célula com intervenção × sua base:
+    net100-az-realjun-folgada × az-realjun-folgada: tau_b=0,9259
+    net100-go-realjun-folgada × go-realjun-folgada: tau_b=1,0000
+    net100-az-anticorr-folgada × az-anticorr-folgada: tau_b=0,8519
+    net100-az-realjun-alta × az-realjun-alta: tau_b=0,9273
+    geo3-az-realjun-folgada × az-realjun-folgada: tau_b=0,6606
+    geo3-go-realjun-folgada × go-realjun-folgada: tau_b=0,7707
+    hetcap-az-realjun-folgada × az-realjun-folgada: tau_b=0,8074
+    hetcap-az-anticorr-folgada × az-anticorr-folgada: tau_b=0,9259
+    pue-az-realjun-folgada × az-realjun-folgada: tau_b=0,9630
+    pue-go-realjun-folgada × go-realjun-folgada: tau_b=1,0000
+  pares-testemunha de inversão (total_gco2, 22 células): 28 pares (17 só entre estáticos)
+    best_fit×bfd; best_fit×ffd; best_fit×follow_renewables; best_fit×lowest_carbon_dc; best_fit×worst_fit; best_fit×wsnb; bfd×ffd; bfd×first_fit; bfd×follow_renewables; bfd×lowest_carbon_dc; bfd×wsnb; cnemesis×ffd; cnemesis×first_fit; cnemesis×follow_renewables; cnemesis×followme_s; ffd×first_fit; ffd×follow_renewables; ffd×followme_s; ffd×lowest_carbon_dc; ffd×worst_fit; ffd×wsnb; first_fit×follow_renewables; first_fit×lowest_carbon_dc; first_fit×worst_fit; first_fit×wsnb; follow_renewables×followme_s; follow_renewables×wsnb; lowest_carbon_dc×wsnb
+  pares-testemunha de inversão (gco2_por_vm, 22 células): 29 pares (16 só entre estáticos)
+    best_fit×bfd; best_fit×cnemesis; best_fit×ffd; best_fit×first_fit; best_fit×follow_renewables; best_fit×followme_s; best_fit×lowest_carbon_dc; best_fit×wsnb; bfd×follow_renewables; bfd×lowest_carbon_dc; bfd×worst_fit; bfd×wsnb; cnemesis×ffd; cnemesis×first_fit; cnemesis×follow_renewables; cnemesis×followme_s; ffd×first_fit; ffd×follow_renewables; ffd×followme_s; ffd×lowest_carbon_dc; ffd×worst_fit; ffd×wsnb; first_fit×follow_renewables; first_fit×lowest_carbon_dc; first_fit×worst_fit; first_fit×wsnb; follow_renewables×followme_s; follow_renewables×wsnb; lowest_carbon_dc×wsnb
+
+  -- A-07b: recorte pareado de sementes 42-51 --
+  Motivo: no artefato canônico cada célula entra com o SEU n (30 na fase 1, 10 nas
+  intervenções), de modo que todo par que atravessa esses dois grupos mistura efeito
+  de desempate com efeito de tamanho de amostra. O mesmo confundimento já foi
+  medido em A-10, onde o controle pareado do PUE dá 1,0000 e o não pareado dá 0,9630.
+  231 pares em 42-51: mediana=0,7037 mínimo=0,0748 máximo=1,0000
+  cinco menores: az-flat-folgada×go-anticorr-alta=0,075; az-flat-folgada×geo3-go-realjun-folgada=0,112; go-flat-folgada×go-flat-alta=0,154; az-anticorr-alta×go-flat-alta=0,187; go-flat-alta×net100-az-anticorr-folgada=0,189
+  célula com intervenção × sua base, pareado em 42-51:
+    net100-az-realjun-folgada × az-realjun-folgada: pareado=0,9630 (não pareado=0,9259)
+    net100-go-realjun-folgada × go-realjun-folgada: pareado=1,0000 (não pareado=1,0000)
+    net100-az-anticorr-folgada × az-anticorr-folgada: pareado=0,8519 (não pareado=0,8519)
+    net100-az-realjun-alta × az-realjun-alta: pareado=0,9636 (não pareado=0,9273)
+    geo3-az-realjun-folgada × az-realjun-folgada: pareado=0,6973 (não pareado=0,6606)
+    geo3-go-realjun-folgada × go-realjun-folgada: pareado=0,7707 (não pareado=0,7707)
+    hetcap-az-realjun-folgada × az-realjun-folgada: pareado=0,8441 (não pareado=0,8074)
+    hetcap-az-anticorr-folgada × az-anticorr-folgada: pareado=0,9259 (não pareado=0,9259)
+    pue-az-realjun-folgada × az-realjun-folgada: pareado=1,0000 (não pareado=0,9630)
+    pue-go-realjun-folgada × go-realjun-folgada: pareado=1,0000 (não pareado=1,0000)
+
+
+== A-08 — posição de ffd e bfd entre os estáticos ==
+antigo: em go-flat-folgada ffd supera lowest_carbon_dc (17.492 contra 18.755 gCO2e; p = 0,0020); bfd descartou 8,2% no Google; por VM atendida bfd cai do 8º ao 10º em go-realjun-alta e do 6º ao 10º em go-anticorr-alta
+  go-flat-folgada ffd=17507,9 vs lowest_carbon_dc=18989,9 gCO2e; dif=-7,8040% p_bruto=1.863e-09 p_holm55=1.024e-07 significativo=True
+  bfd, descarte nas 9 células Google das 22: máximo=8,12% (em go-anticorr-alta), mediana=0,00%
+  bfd em go-realjun-alta: descarte=8,12% posto_total=8,0 posto_por_vm=10,0 difere=True
+  bfd em go-anticorr-alta: descarte=8,12% posto_total=6,0 posto_por_vm=10,0 difere=True
+  combinações (célula × algoritmo) das 22 em que o posto muda ao normalizar por VM atendida: 36/242
+
+
+== A-09 — vantagem sob sinal espacialmente variável e carga moderada ==
+antigo: 23,7% a 67,0% nas 4 configurações (p = 0,0020; r = -1,00)
+  az-realjun-folgada: vantagem=+58,7423% [followme_s x first_fit] p=1.863e-09 r=-1,000
+      recorte 42-51: vantagem=+58,3716% [followme_s x first_fit] p=1.953e-03
+  az-anticorr-folgada: vantagem=+37,7972% [followme_s x first_fit] p=1.863e-09 r=-1,000
+      recorte 42-51: vantagem=+36,9955% [followme_s x first_fit] p=1.953e-03
+  go-realjun-folgada: vantagem=+65,9902% [followme_s x ffd] p=1.863e-09 r=-1,000
+      recorte 42-51: vantagem=+65,8856% [followme_s x ffd] p=1.953e-03
+  go-anticorr-folgada: vantagem=+28,2982% [followme_s x ffd] p=1.863e-09 r=-1,000
+      recorte 42-51: vantagem=+29,0054% [followme_s x ffd] p=1.953e-03
+  faixa canônica: 28,3% a 66,0%
+
+
+== A-11 — menor kWh coincide com menor gCO2e em 9 de 12 ==
+antigo: 9/12; erros de proxy de 1,5%, 0,3% e 1,31x nos divergentes
+  coincidências: 10/12
+    az-anticorr-folgada: kWh->first_fit gCO2e->followme_s razão=1,6076× (+60,7645%)
+    go-anticorr-folgada: kWh->ffd gCO2e->followme_s razão=1,3947× (+39,4666%)
+  empates no topo em qualquer das duas métricas: 0/12
+
+
+== A-14 — controle negativo flat ==
+antigo: tau = 1,000 nas 4 configurações; razão 475,0 exata em 440/440 execuções
+  az-flat-alta: tau_b(gCO2e, kWh)=1,0000 esperado=1,0000 controle_ok=True
+  az-flat-folgada: tau_b(gCO2e, kWh)=1,0000 esperado=1,0000 controle_ok=True
+  go-flat-alta: tau_b(gCO2e, kWh)=1,0000 esperado=1,0000 controle_ok=True
+  go-flat-folgada: tau_b(gCO2e, kWh)=1,0000 esperado=1,0000 controle_ok=True
+  razão gCO2e/kWh nas células flat: 1320 execuções; mínimo=475,000000000 máximo=475,000000000; desvio máximo de 475,0 = 4.076e-11
+
+
+== A-20 — correlação entre os rankings do Azure e do Google ==
+antigo: rho entre 0,855 e 0,991 (p <= 8,1e-4)
+  az-flat-folgada × go-flat-folgada: rho=0,6759 tau_b=0,5769 p=2.242e-02 p_holm10=2.242e-02
+  az-flat-alta × go-flat-alta: rho=0,7685 tau_b=0,6538 p=5.718e-03 p_holm10=1.144e-02
+  az-anticorr-alta × go-anticorr-alta: rho=0,8636 tau_b=0,7818 p=6.117e-04 p_holm10=1.835e-03
+  az-em2021-folgada × go-em2021-folgada: rho=0,9000 tau_b=0,7455 p=1.600e-04 p_holm10=6.399e-04
+  az-anticorr-folgada × go-anticorr-folgada: rho=0,9269 tau_b=0,8519 p=4.054e-05 p_holm10=2.027e-04
+  az-em2021-alta × go-em2021-alta: rho=0,9636 tau_b=0,8909 p=1.852e-06 p_holm10=1.111e-05
+  az-realjan-alta × go-realjan-alta: rho=0,9818 tau_b=0,9273 p=8.403e-08 p_holm10=6.722e-07
+  az-realjun-alta × go-realjun-alta: rho=0,9818 tau_b=0,9273 p=8.403e-08 p_holm10=6.722e-07
+  az-realjan-folgada × go-realjan-folgada: rho=0,9909 tau_b=0,9630 p=3.840e-09 p_holm10=3.840e-08
+  az-realjun-folgada × go-realjun-folgada: rho=0,9909 tau_b=0,9630 p=3.840e-09 p_holm10=3.840e-08
+  rho: mínimo=0,6759 máximo=0,9909 mediana=0,9453
+  significativos a 0,05 sem correção: 10/10; sob Holm m=10: 10/10
+  RECORTE DA AFIRMAÇÃO — fora das flat (8 pares): rho de 0,8636 a 0,9909; p máximo=6.117e-04; p_holm máximo=1.835e-03
+  contexto — pares flat, FORA do escopo da afirmação: az-flat-folgada=0,6759; az-flat-alta=0,7685
+
+
+== A-21 — pódio por célula ==
+antigo: cnemesis 1º em 3 moderadas e 3º sob alta; follow_renewables 3º->1º; pódio cnemesis 5, followme_s 3, follow_renewables 2; ffd 2º em geo3-go
+  primeiro colocado (empates contam para todos): followme_s=13; follow_renewables=5; cnemesis=3; ffd=1
+  pódio (posto médio <= 3): followme_s=21; cnemesis=20; follow_renewables=8; first_fit=3; wsnb=2; best_fit=1; ffd=1; lowest_carbon_dc=1
+    az-realjun-folgada: followme_s (1,0) | cnemesis (2,0) | follow_renewables (3,5)
+    az-realjun-alta: follow_renewables (1,0) | followme_s (2,0) | cnemesis (3,0)
+    az-flat-folgada: followme_s (1,0) | first_fit (2,0) | best_fit (3,0)
+    az-flat-alta: cnemesis (1,0) | followme_s (2,0) | first_fit (3,0)
+    az-anticorr-folgada: followme_s (1,0) | cnemesis (2,0) | wsnb (3,0)
+    az-anticorr-alta: follow_renewables (1,0) | followme_s (2,0) | cnemesis (3,0)
+    go-realjun-folgada: followme_s (1,0) | cnemesis (2,0) | follow_renewables (3,5)
+    go-realjun-alta: follow_renewables (1,0) | followme_s (2,0) | cnemesis (3,0)
+    go-flat-folgada: ffd (1,0) | followme_s (2,0) | cnemesis (3,0)
+    go-flat-alta: followme_s (1,0) | cnemesis (2,0) | first_fit (3,0)
+    go-anticorr-folgada: followme_s (1,0) | cnemesis (2,0) | follow_renewables (3,5)
+    go-anticorr-alta: follow_renewables (1,0) | followme_s (2,0) | cnemesis (3,0)
+    net100-az-realjun-folgada: cnemesis (1,0) | followme_s (2,0) | follow_renewables (3,5)
+    net100-go-realjun-folgada: followme_s (1,0) | cnemesis (2,0) | follow_renewables (3,5)
+    net100-az-anticorr-folgada: cnemesis (1,0) | wsnb (2,0) | lowest_carbon_dc (3,5)
+    net100-az-realjun-alta: followme_s (1,0) | follow_renewables (2,0) | cnemesis (3,0)
+    geo3-az-realjun-folgada: followme_s (1,0) | cnemesis (2,0) | follow_renewables (3,0)
+    geo3-go-realjun-folgada: followme_s (1,0) | lowest_carbon_dc (2,0) | follow_renewables (3,0)
+    hetcap-az-realjun-folgada: follow_renewables (1,0) | cnemesis (2,0) | followme_s (3,0)
+    hetcap-az-anticorr-folgada: followme_s (1,0) | cnemesis (2,0) | follow_renewables (3,5)
+    pue-az-realjun-folgada: followme_s (1,0) | cnemesis (2,0) | follow_renewables (3,5)
+    pue-go-realjun-folgada: followme_s (1,0) | cnemesis (2,0) | follow_renewables (3,5)
+  cnemesis nas moderadas (12 ref.): postos médios az-anticorr-folgada=2,0; az-flat-folgada=4,0; az-realjun-folgada=2,0; go-anticorr-folgada=2,0; go-flat-folgada=3,0; go-realjun-folgada=2,0
+  cnemesis nas altas (12 ref.): postos médios az-anticorr-alta=3,0; az-flat-alta=1,0; az-realjun-alta=3,0; go-anticorr-alta=3,0; go-flat-alta=2,0; go-realjun-alta=3,0
+  ffd em geo3-go-realjun-folgada: posto_medio=5,0
+
+
+== A-12 e A-13 — identidade de alocação e inércia de follow_renewables ==
+antigo A-12: identidade por construção, explicada a partir do código-fonte
+antigo A-13: 0 migrações; idêntico em 10/10 seeds
+  cobertura da verificação em nível de evento: 780 pares (migrador x semente), 26 células, 3 migradores
+  pares com sequência de posicionamento idêntica: 380/780
+  por migrador: cnemesis=100/260; follow_renewables=180/260; followme_s=100/260
+  onde diverge, diverge em massa: n_dst_diferentes de 523 a 6573 VMs; casos intermediários (1 <= n_dst_diferentes <= 10): 0
+  execuções com ZERO migrações: 160; destas, com alocação idêntica: 160 -> a identidade por construção vale exatamente onde não há migração
+  execuções COM migração e ainda assim com alocação idêntica: 220 (células: ['az-anticorr-folgada', 'az-flat-folgada', 'az-realjan-folgada', 'az-realjun-folgada', 'geo3-az-realjun-folgada', 'hetcap-az-anticorr-folgada', 'hetcap-az-realjun-folgada', 'net100-az-anticorr-folgada', 'net100-az-realjun-folgada', 'pue-az-realjun-folgada'])
+  follow_renewables nas 17 células de carga moderada das 26: inerte (0 migrações nas 10 sementes) em 14
+    exceções: geo3-az-realjun-folgada=8793 migrações em 10 sementes; geo3-go-realjun-folgada=5263 migrações em 10 sementes; hetcap-az-realjun-folgada=4967 migrações em 10 sementes
+  recorte da fase 1 (16 células): moderadas=8, todas inertes: True; alocação idêntica em 10/10 sementes: True
+  células em que follow_renewables tem alocação idêntica nas 10 sementes: 18/26
+
+
+== A-22 — contagem de execuções e de configurações ==
+antigo: 3.890 execuções; 26 configurações executadas, 22 não redundantes; 1.760 + 1.100 = 2.860 mais extensões
+  run-010-fase1-canonica-seeds42-51: 1760 execuções, 16 células
+  run-011-fase23-canonica-seeds42-51: 1100 execuções, 10 células
+  run-012-em2021-canonica-seeds42-51: 440 execuções, 4 células
+  run-013-fase1-canonica-seeds52-71: 3520 execuções, 16 células
+  campanha canônica: 6820 execuções, 30 configurações executadas
+  configurações redundantes por construção do dado (realjan): 4 -> 26 não redundantes
+  soma conferida: 1760 + 1100 + 440 + 3520 = 6820
+  células com n = 30: 16; com n = 10: 14
+
+
+== A-23 — redundância das 4 configurações realjan ==
+antigo: 4/4 pares bit-idênticos
+  colunas científicas comparadas (7): ['total_kwh', 'total_gco2', 'total_migrations', 'total_mig_bytes', 'mean_active_hosts', 'final_sla_violations', 'total_unplaced_vms']
+  colunas de medição de relógio, comparadas à parte (1): ['algo_wall_total_us']
+  az-realjan-alta x az-realjun-alta: 330 execuções; colunas científicas idênticas: True; desvio máximo no tempo de decisão = 40860 us
+  az-realjan-folgada x az-realjun-folgada: 330 execuções; colunas científicas idênticas: True; desvio máximo no tempo de decisão = 9576 us
+  go-realjan-alta x go-realjun-alta: 330 execuções; colunas científicas idênticas: True; desvio máximo no tempo de decisão = 19923 us
+  go-realjan-folgada x go-realjun-folgada: 330 execuções; colunas científicas idênticas: True; desvio máximo no tempo de decisão = 6386 us
+  pares bit-idênticos nas grandezas do modelo: 4/4

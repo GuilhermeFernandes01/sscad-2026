@@ -1,0 +1,102 @@
+{
+  "binario_congelado": {
+    "caminho": "algorithms-simgrid/build-congelado-c/src/runner/algosim",
+    "commit": "305e2b27726305e196eea090fabc312280b39e1f",
+    "sha256": "36bfe40eed33c8b8cb491894acd6f63c05c13e0d7a15a6e6f7b9401246d94c6d"
+  },
+  "cadeia_analitica": {
+    "claims_bloco_afirmacoes_sha256": "b3b6ed9104ef9ae9a193feb9b3f56feaabb06ac5083bb4b1aeb65bfa9c1ac11c",
+    "codigo_analitico_manifesto_sha256": "bdd69f2f4ac6ec40b05099fd91a67abc24321d2d623b0d29eff9fc3fb57d0bf9",
+    "entradas": [
+      {
+        "arquivo": "processed/fase1_summary_metrics.csv",
+        "run": "run-010-fase1-canonica-seeds42-51",
+        "sha256": "f219a1f41d016bed82f0dc7c94bc5314d1c87e6d223f95718939b68c24566407"
+      },
+      {
+        "arquivo": "processed/fase23_summary_metrics.csv",
+        "run": "run-011-fase23-canonica-seeds42-51",
+        "sha256": "c2ef91a577a73a9f6cf69ef40d2f52d8858e5c572dc0fd27c000cd0624a5c3f8"
+      },
+      {
+        "arquivo": "processed/em2021_summary_metrics.csv",
+        "run": "run-012-em2021-canonica-seeds42-51",
+        "sha256": "45a26612c362e89cad4ef1af3dab99de92693260f567138de2cc854e8aa0e033"
+      },
+      {
+        "arquivo": "processed/fase1_seeds52_71_summary_metrics.csv",
+        "run": "run-013-fase1-canonica-seeds52-71",
+        "sha256": "fcd061a4360602109642402c9e1db1cfbdd8a6806bf3d0b58ca7b49363c0a92a"
+      }
+    ],
+    "matriz_canonica_sha256_promovido": "8128aedef67ed3fd0081a208c581af46593f365be5c61bc6a9ec7f8388bc8113",
+    "nota": "scripts em analysis/ adaptados do congelamento original apenas em caminhos de entrada e comentarios; saidas regeneradas byte a byte identicas ao agregado saidas_48_agregado_sha256",
+    "saidas_48_agregado_sha256": "3b909782f45e0aafa0812ab687018246b9f604be7da45851f3b52bb1993007ae"
+  },
+  "celulas": {
+    "atendimento_integral": [
+      "az-anticorr-folgada",
+      "az-em2021-folgada",
+      "az-flat-folgada",
+      "az-realjan-folgada",
+      "az-realjun-folgada",
+      "geo3-az-realjun-folgada",
+      "hetcap-az-anticorr-folgada",
+      "hetcap-az-realjun-folgada",
+      "net100-az-anticorr-folgada",
+      "net100-az-realjun-folgada",
+      "pue-az-realjun-folgada"
+    ],
+    "classe_a_comparacao_escalar_proibida": [
+      "az-anticorr-alta",
+      "az-em2021-alta",
+      "az-flat-alta",
+      "az-realjan-alta",
+      "az-realjun-alta",
+      "geo3-go-realjun-folgada",
+      "go-anticorr-alta",
+      "go-em2021-alta",
+      "go-flat-alta",
+      "go-realjan-alta",
+      "go-realjun-alta",
+      "net100-az-realjun-alta"
+    ],
+    "classe_b_ordenacao_robusta_reportar_atendimento": [
+      "go-anticorr-folgada",
+      "go-em2021-folgada",
+      "go-flat-folgada",
+      "go-realjan-folgada",
+      "go-realjun-folgada",
+      "net100-go-realjun-folgada",
+      "pue-go-realjun-folgada"
+    ],
+    "nota": "listas classe A e B transcritas da regra de comparacao congelada antes da reanalise; atendimento_integral derivada por contagem de analytical-outputs/atendimento_resumo.csv (atend_min = atend_max = 100) e conferida contra a contagem declarada (11)"
+  },
+  "pacote": {
+    "agregado_analytical_outputs": "3b909782f45e0aafa0812ab687018246b9f604be7da45851f3b52bb1993007ae",
+    "claims_csv_sha256": "782c34f7b701d88219980df09315316b2deaf60df2c478fa2ccddd4151ed07fc",
+    "conteudo": {
+      "SHA256SUMS.txt": "manifesto integral do pacote, incluindo README.md e os dois scripts",
+      "analytical-outputs/": "copia byte a byte das 48 saidas analiticas da ratificacao de nivel 3",
+      "claims.csv": "transcricao campo a campo das 23 afirmacoes da matriz canonica promovida (4 preservada / 9 preservada_com_magnitude_revisada / 9 reformulada / 1 refutada)",
+      "normalizadores/": "copia byte a byte do congelamento original (2 arquivos pinados): medias por celula/algoritmo sob os tres numeradores e a comparacao de postos N0/N1/N2",
+      "provenance.json": "este arquivo: proveniencia e politica de integridade do pacote"
+    },
+    "politica_de_integridade": "TODOS os arquivos do pacote, inclusive README.md e verify_canonical_results.py, constam de SHA256SUMS.txt. Apos o congelamento, qualquer mudanca de byte em qualquer arquivo do pacote faz verify_canonical_results.py falhar."
+  },
+  "politica_de_unidades": {
+    "algo_wall_us": "microssegundos de relogio; EXCLUIDO das comparacoes de identidade e das colunas cientificas",
+    "regra_bca": "valores BCa da campanha antiga em kgCO2e apesar do rotulo gCO2e; corrigir na reescrita",
+    "total_gco2": "gCO2e conforme exportado pelo simulador; unidade absoluta nao auditada exaustivamente (R-RM-V1-PARCIAL); uso seguro e comparativo/relativo",
+    "total_kwh": "kWh conforme exportado; mesma ressalva R-RM-V1-PARCIAL",
+    "total_mig_bytes": "MiB (R-MIGBYTES-V2)",
+    "total_migrations": "contagem de migracoes emitidas, nao concluidas (R-MIG-EMITIDAS)"
+  },
+  "rg_int": "A analise canonica foi reproduzida de forma deterministica usando o mesmo codigo de analise, ambiente e coordenacao. Isso verifica integridade, proveniencia e determinismo da transformacao; nao constitui implementacao independente e nao exclui erro sistematico comum ao pipeline (RG-INT).",
+  "series_de_carbono_externas": {
+    "commit": "305e2b27726305e196eea090fabc312280b39e1f",
+    "manifesto_sha256": "fa2379bb33ff0dffcecaea06775e7e19345fc56775be2835bcd96185ad9bce69",
+    "repositorio": "algorithms-simgrid"
+  },
+  "what": "Provenance of the frozen analytical package. Every number in the paper is in this package or derivable from it."
+}

@@ -1,0 +1,142 @@
+# Celula Fase 1 (nao editar a mao: sha256 registrado em runs/*/env/inputs-sha256.txt)
+# workload=google carbon=realjan load=alta
+# Scenario B-Google: Geo-distributed 9-DC federation with Google 2011 trace workload
+#
+# Same infrastructure and carbon traces as geo_9dc.yaml, but the workload is
+# derived from the Google Cluster 2011 production trace (Vasconcelos et al.
+# SMARTGREENS 2022 reference). First 2000 VMs subsampled, demands capped at
+# the largest host capacity (170240 MIPS).
+
+scenario:
+  name: geo9_google_realjan_alta
+  duration_seconds: 14400
+  dt_seconds: 60
+  migration_interval_seconds: 600
+  seed: 42
+  start_datetime: "2020-01-01T00:00:00"
+
+topology:
+  platform_xml: ""
+
+datacenters:
+  - id: canberra
+    name: "Canberra"
+    latitude: -35.28
+    longitude: 149.13
+    pue: 1.405
+    carbon_series_id: canberra
+    host_groups:
+      - { template: { cpu_cores: 16, cpu_capacity_mips: 42560,  ram_mb: 65536,  net_bw_mbps: 10000, power_idle_w: 35,  power_peak_w: 50 },  count: 25 }
+      - { template: { cpu_cores: 32, cpu_capacity_mips: 85120,  ram_mb: 131072, net_bw_mbps: 10000, power_idle_w: 70,  power_peak_w: 100 }, count: 15 }
+      - { template: { cpu_cores: 64, cpu_capacity_mips: 170240, ram_mb: 262144, net_bw_mbps: 10000, power_idle_w: 140, power_peak_w: 200 }, count: 10 }
+
+  - id: seoul
+    name: "Seoul"
+    latitude: 37.57
+    longitude: 126.98
+    pue: 1.405
+    carbon_series_id: seoul
+    host_groups:
+      - { template: { cpu_cores: 16, cpu_capacity_mips: 42560,  ram_mb: 65536,  net_bw_mbps: 10000, power_idle_w: 35,  power_peak_w: 50 },  count: 25 }
+      - { template: { cpu_cores: 32, cpu_capacity_mips: 85120,  ram_mb: 131072, net_bw_mbps: 10000, power_idle_w: 70,  power_peak_w: 100 }, count: 15 }
+      - { template: { cpu_cores: 64, cpu_capacity_mips: 170240, ram_mb: 262144, net_bw_mbps: 10000, power_idle_w: 140, power_peak_w: 200 }, count: 10 }
+
+  - id: paris
+    name: "Paris"
+    latitude: 48.85
+    longitude: 2.35
+    pue: 1.20
+    carbon_series_id: paris
+    host_groups:
+      - { template: { cpu_cores: 16, cpu_capacity_mips: 42560,  ram_mb: 65536,  net_bw_mbps: 10000, power_idle_w: 35,  power_peak_w: 50 },  count: 25 }
+      - { template: { cpu_cores: 32, cpu_capacity_mips: 85120,  ram_mb: 131072, net_bw_mbps: 10000, power_idle_w: 70,  power_peak_w: 100 }, count: 15 }
+      - { template: { cpu_cores: 64, cpu_capacity_mips: 170240, ram_mb: 262144, net_bw_mbps: 10000, power_idle_w: 140, power_peak_w: 200 }, count: 10 }
+
+  - id: virginia
+    name: "Virginia"
+    latitude: 37.43
+    longitude: -78.65
+    pue: 1.40
+    carbon_series_id: virginia
+    host_groups:
+      - { template: { cpu_cores: 16, cpu_capacity_mips: 42560,  ram_mb: 65536,  net_bw_mbps: 10000, power_idle_w: 35,  power_peak_w: 50 },  count: 25 }
+      - { template: { cpu_cores: 32, cpu_capacity_mips: 85120,  ram_mb: 131072, net_bw_mbps: 10000, power_idle_w: 70,  power_peak_w: 100 }, count: 15 }
+      - { template: { cpu_cores: 64, cpu_capacity_mips: 170240, ram_mb: 262144, net_bw_mbps: 10000, power_idle_w: 140, power_peak_w: 200 }, count: 10 }
+
+  - id: dubai
+    name: "Dubai"
+    latitude: 25.20
+    longitude: 55.27
+    pue: 1.40
+    carbon_series_id: dubai
+    host_groups:
+      - { template: { cpu_cores: 16, cpu_capacity_mips: 42560,  ram_mb: 65536,  net_bw_mbps: 10000, power_idle_w: 35,  power_peak_w: 50 },  count: 25 }
+      - { template: { cpu_cores: 32, cpu_capacity_mips: 85120,  ram_mb: 131072, net_bw_mbps: 10000, power_idle_w: 70,  power_peak_w: 100 }, count: 15 }
+      - { template: { cpu_cores: 64, cpu_capacity_mips: 170240, ram_mb: 262144, net_bw_mbps: 10000, power_idle_w: 140, power_peak_w: 200 }, count: 10 }
+
+  - id: singapore
+    name: "Singapore"
+    latitude: 1.35
+    longitude: 103.82
+    pue: 1.35
+    carbon_series_id: singapore
+    host_groups:
+      - { template: { cpu_cores: 16, cpu_capacity_mips: 42560,  ram_mb: 65536,  net_bw_mbps: 10000, power_idle_w: 35,  power_peak_w: 50 },  count: 25 }
+      - { template: { cpu_cores: 32, cpu_capacity_mips: 85120,  ram_mb: 131072, net_bw_mbps: 10000, power_idle_w: 70,  power_peak_w: 100 }, count: 15 }
+      - { template: { cpu_cores: 64, cpu_capacity_mips: 170240, ram_mb: 262144, net_bw_mbps: 10000, power_idle_w: 140, power_peak_w: 200 }, count: 10 }
+
+  - id: pune
+    name: "Pune"
+    latitude: 18.52
+    longitude: 73.86
+    pue: 1.40
+    carbon_series_id: pune
+    host_groups:
+      - { template: { cpu_cores: 16, cpu_capacity_mips: 42560,  ram_mb: 65536,  net_bw_mbps: 10000, power_idle_w: 35,  power_peak_w: 50 },  count: 25 }
+      - { template: { cpu_cores: 32, cpu_capacity_mips: 85120,  ram_mb: 131072, net_bw_mbps: 10000, power_idle_w: 70,  power_peak_w: 100 }, count: 15 }
+      - { template: { cpu_cores: 64, cpu_capacity_mips: 170240, ram_mb: 262144, net_bw_mbps: 10000, power_idle_w: 140, power_peak_w: 200 }, count: 10 }
+
+  - id: johannesburg
+    name: "Johannesburg"
+    latitude: -26.20
+    longitude: 28.04
+    pue: 1.40
+    carbon_series_id: johannesburg
+    host_groups:
+      - { template: { cpu_cores: 16, cpu_capacity_mips: 42560,  ram_mb: 65536,  net_bw_mbps: 10000, power_idle_w: 35,  power_peak_w: 50 },  count: 25 }
+      - { template: { cpu_cores: 32, cpu_capacity_mips: 85120,  ram_mb: 131072, net_bw_mbps: 10000, power_idle_w: 70,  power_peak_w: 100 }, count: 15 }
+      - { template: { cpu_cores: 64, cpu_capacity_mips: 170240, ram_mb: 262144, net_bw_mbps: 10000, power_idle_w: 140, power_peak_w: 200 }, count: 10 }
+
+  - id: sp
+    name: "São Paulo"
+    latitude: -23.55
+    longitude: -46.63
+    pue: 1.17
+    carbon_series_id: sp
+    host_groups:
+      - { template: { cpu_cores: 16, cpu_capacity_mips: 42560,  ram_mb: 65536,  net_bw_mbps: 10000, power_idle_w: 35,  power_peak_w: 50 },  count: 25 }
+      - { template: { cpu_cores: 32, cpu_capacity_mips: 85120,  ram_mb: 131072, net_bw_mbps: 10000, power_idle_w: 70,  power_peak_w: 100 }, count: 15 }
+      - { template: { cpu_cores: 64, cpu_capacity_mips: 170240, ram_mb: 262144, net_bw_mbps: 10000, power_idle_w: 140, power_peak_w: 200 }, count: 10 }
+
+carbon:
+  - { series_id: canberra,      kind: csv, path: data/carbon/canberra.csv,      step_seconds: 3600 }
+  - { series_id: seoul,         kind: csv, path: data/carbon/seoul.csv,         step_seconds: 3600 }
+  - { series_id: paris,         kind: csv, path: data/carbon/paris.csv,         step_seconds: 3600 }
+  - { series_id: virginia,      kind: csv, path: data/carbon/virginia.csv,      step_seconds: 3600 }
+  - { series_id: dubai,         kind: csv, path: data/carbon/dubai.csv,         step_seconds: 3600 }
+  - { series_id: singapore,     kind: csv, path: data/carbon/singapore.csv,     step_seconds: 3600 }
+  - { series_id: pune,          kind: csv, path: data/carbon/pune.csv,          step_seconds: 3600 }
+  - { series_id: johannesburg,  kind: csv, path: data/carbon/johannesburg.csv,  step_seconds: 3600 }
+  - { series_id: sp,            kind: csv, path: data/carbon/sp.csv,            step_seconds: 3600 }
+
+workload:
+  kind: trace_file
+  path: data/workloads/google_2011.txt
+  format: cnemesis
+  n_vms: 9000
+  ram_mb: 8192
+  image_size_mb: 8192
+  dirty_rate_mbps: 40
+  lifetime_mean_seconds: 7200
+  max_demand_mips: 170000
+  rescale_arrival_seconds: 7200

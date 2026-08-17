@@ -1,0 +1,5 @@
+celula	execucoes	parede_total_s	parede_mediana_s	parede_max_s	cpu_total_s	pico_memoria_max_kb	retentativas	falhas
+az-em2021-alta	110	29932.61	25.15	2394.38	29756.95	191064.0	0	0
+az-em2021-folgada	110	169.13	1.54	3.49	166.95	69640.0	0	0
+go-em2021-alta	110	29971.66	20.61	1663.92	29899.68	157360.0	0	0
+go-em2021-folgada	110	247.18	1.30	13.46	244.87	49640.0	0	0

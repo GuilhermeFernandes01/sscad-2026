@@ -1,0 +1,5 @@
+celula,papel,par,melhores_ca,melhores_gb,topo_unico,vantagem_pct,p_bruto_wsr,r_rank_biserial
+az-realjun-folgada,base,hetcap-az-realjun-folgada,followme_s,first_fit,True,58.37159862632267,0.001953125,-1.0
+hetcap-az-realjun-folgada,hetcap,hetcap-az-realjun-folgada,follow_renewables,first_fit,True,34.3313449951662,0.001953125,-1.0
+az-anticorr-folgada,base,hetcap-az-anticorr-folgada,followme_s,first_fit,True,36.99547788145794,0.001953125,-1.0
+hetcap-az-anticorr-folgada,hetcap,hetcap-az-anticorr-folgada,followme_s,first_fit,True,41.91202674170732,0.001953125,-1.0

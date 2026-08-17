@@ -1,0 +1,54 @@
+== 0. Escopo dos dados ==
+  run-010-fase1-canonica-seeds42-51: 1760 execuções, 16 células
+  run-011-fase23-canonica-seeds42-51: 1100 execuções, 10 células
+  run-012-em2021-canonica-seeds42-51: 440 execuções, 4 células
+  run-013-fase1-canonica-seeds52-71: 3520 execuções, 16 células
+  total: 6820 execuções, 30 células, 11 algoritmos
+  n_vms por célula, lido do config.yaml congelado: az-anticorr-alta=10000, az-anticorr-folgada=2000, az-em2021-alta=10000, az-em2021-folgada=2000, az-flat-alta=10000, az-flat-folgada=2000, az-realjan-alta=10000, az-realjan-folgada=2000, az-realjun-alta=10000, az-realjun-folgada=2000, geo3-az-realjun-folgada=2000, geo3-go-realjun-folgada=2000, go-anticorr-alta=9000, go-anticorr-folgada=2000, go-em2021-alta=9000, go-em2021-folgada=2000, go-flat-alta=9000, go-flat-folgada=2000, go-realjan-alta=9000, go-realjan-folgada=2000, go-realjun-alta=9000, go-realjun-folgada=2000, hetcap-az-anticorr-folgada=2000, hetcap-az-realjun-folgada=2000, net100-az-anticorr-folgada=2000, net100-az-realjun-alta=10000, net100-az-realjun-folgada=2000, net100-go-realjun-folgada=2000, pue-az-realjun-folgada=2000, pue-go-realjun-folgada=2000
+
+== 0a. Piso de resolução do teste exato, por célula ==
+  Determinado por n ANTES de olhar resultados; não é seleção pós-hoc.
+  n=10 sementes (14 células): menor p bilateral exato = 0.001953125; sob Holm m=55 o menor p ajustado alcançável é 0.107422 -> família de 55 SEM resolução; sob Holm m=3, 0.00585938 -> família primária COM resolução
+      células: az-em2021-alta, az-em2021-folgada, geo3-az-realjun-folgada, geo3-go-realjun-folgada, go-em2021-alta, go-em2021-folgada, hetcap-az-anticorr-folgada, hetcap-az-realjun-folgada, net100-az-anticorr-folgada, net100-az-realjun-alta, net100-az-realjun-folgada, net100-go-realjun-folgada, pue-az-realjun-folgada, pue-go-realjun-folgada
+  n=30 sementes (16 células): menor p bilateral exato = 1.862645149e-09; sob Holm m=55 o menor p ajustado alcançável é 1.02445e-07 -> família de 55 COM resolução; sob Holm m=3, 5.58794e-09 -> família primária COM resolução
+      células: az-anticorr-alta, az-anticorr-folgada, az-flat-alta, az-flat-folgada, az-realjan-alta, az-realjan-folgada, az-realjun-alta, az-realjun-folgada, go-anticorr-alta, go-anticorr-folgada, go-flat-alta, go-flat-folgada, go-realjan-alta, go-realjan-folgada, go-realjun-alta, go-realjun-folgada
+  As 55 vagas continuam existindo e sendo reportadas em TODAS as células; o que varia é o poder do teste, não o conjunto de contrastes (RE-2).
+
+== 0b. Degenerescência estrutural (critério a priori, sem olhar resultados) ==
+  células com (follow_renewables, lowest_carbon_dc) equivalente por construção: 4 de 30 — az-flat-alta, az-flat-folgada, go-flat-alta, go-flat-folgada
+  [origem: ../alocacao-identica/out/criterio-a-priori.txt]
+  Qualquer outra igualdade observada é EMPATE EMPÍRICO e não reduz família, não vira 'equivalente por construção' e não autoriza colapsar tratamentos.
+
+== 1. Família exploratória: 55 pares por (célula, métrica), Holm m=55 ==
+  4950 contrastes em 90 famílias; tamanho de família: [np.int64(55)] (fixo em 55 por desenho)
+  classes: contraste=4878, empate_empirico=60, equivalente_por_construcao=12
+  significativos sob Holm m=55: 2379
+  células COM resolução nesta família (16): az-anticorr-alta, az-anticorr-folgada, az-flat-alta, az-flat-folgada, az-realjan-alta, az-realjan-folgada, az-realjun-alta, az-realjun-folgada, go-anticorr-alta, go-anticorr-folgada, go-flat-alta, go-flat-folgada, go-realjan-alta, go-realjan-folgada, go-realjun-alta, go-realjun-folgada
+  células SEM resolução nesta família (14, n=10 -> 55 × 0,001953 = 0,1074 > 0,05; nenhum par pode ser significativo, quaisquer que sejam os dados): az-em2021-alta, az-em2021-folgada, geo3-az-realjun-folgada, geo3-go-realjun-folgada, go-em2021-alta, go-em2021-folgada, hetcap-az-anticorr-folgada, hetcap-az-realjun-folgada, net100-az-anticorr-folgada, net100-az-realjun-alta, net100-az-realjun-folgada, net100-go-realjun-folgada, pue-az-realjun-folgada, pue-go-realjun-folgada
+
+== 2. Família primária: 3 migradores vs lowest_carbon_dc, Holm m=3 ==
+  90 contrastes em 30 famílias de 3 vagas
+  classes: contraste=74, empate_empirico=12, equivalente_por_construcao=4
+  significativos sob Holm m=3: 65/90
+  com diferença média negativa (migrador emite menos): 71/90
+
+== 3. Rankings por célula (postos médios; vencedor admite empate) ==
+  90 combinações (célula × métrica); com empate no topo: 0
+  combinações com ao menos um empate em qualquer posição: 48
+
+== 4. Melhor carbon-aware vs melhor genérico (gCO2; empates preservados) ==
+  células com topo único nos dois grupos: 30/30
+  células em que o melhor carbon-aware emite menos que o melhor genérico: 29 de 30 com topo único
+
+== 5. Atendimento e ranking por VM atendida (postos médios) ==
+  células com atendimento < 100%: 19/30
+  células em que normalizar por VM atendida muda algum posto: 11/30
+
+== 6. TOST ±1% (Wilcoxon unilateral deslocado) ==
+  90 contrastes; equivalentes a ±1%: 38
+  notas: teste=74, identidade_observada_em_todas_as_seeds=12, equivalente_por_construcao=4
+
+== 7. SECUNDÁRIA — colapso por classe de equivalência (sensibilidade) ==
+  Esta seção é EXPLICITAMENTE SECUNDÁRIA (regra 7 de RE-2). Ela NÃO substitui as famílias das seções 1 e 2, que mantêm todas as vagas.
+  células em que o colapso estrutural reduziria a família: 4/30 (de 55 para 45 pares)
+  Nenhum número desta seção entra nas famílias primária ou exploratória.

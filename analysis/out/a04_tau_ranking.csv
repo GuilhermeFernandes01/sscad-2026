@@ -1,0 +1,5 @@
+celula_real,celula_sintetica,tau_b_vs_sintetica_10,p_nao_corrigido_10,tau_b_vs_sintetica_30,p_nao_corrigido_30,primeiro_real,primeiro_sintetica_10,primeiro_sintetica_30,primeiro_colocado_muda_vs_10
+az-em2021-alta,az-realjun-alta,1.0,5.010421677088344e-08,0.9636363636363636,5.511463844797178e-07,follow_renewables,follow_renewables,follow_renewables,False
+az-em2021-folgada,az-realjun-folgada,0.8440722199302098,0.0003281542287518693,0.8073734277593311,0.0005907573118657001,followme_s,followme_s,followme_s,False
+go-em2021-alta,go-realjun-alta,0.8909090909090909,1.3728555395222063e-05,0.9272727272727274,3.2567740901074234e-06,follow_renewables,follow_renewables,follow_renewables,False
+go-em2021-folgada,go-realjun-folgada,0.8073734277593311,0.0005907573118657001,0.8073734277593311,0.0005907573118657001,follow_renewables,followme_s,followme_s,True

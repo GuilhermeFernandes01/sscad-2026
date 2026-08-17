@@ -1,0 +1,75 @@
+{
+  "fonte_unica": "../canonical-results (verify rc=0 exigido antes de gerar)",
+  "gerador": "generate_paper_artifacts.py",
+  "guardas": [
+    "leitura restrita a canonical-results/",
+    "classe A nunca em contexto de vencedor",
+    "unidades proibidas: kgCO, GiB, migrações concluídas, migracoes concluidas"
+  ],
+  "nao_gerado": {
+    "figura-classe-A-tres-normalizadores": "os postos sob demanda admitida (N2) não estão em canonical-results/"
+  },
+  "o_que_e": "Representações do artigo geradas a partir de canonical-results/, sem decisão científica nova.",
+  "politica_de_arredondamento": {
+    "percentuais": 2,
+    "postos": 1
+  },
+  "saidas": [
+    {
+      "fontes": [
+        "normalizadores/medias_por_celula_algoritmo.csv",
+        "normalizadores/comparacao_normalizadores.csv",
+        "provenance.json#celulas"
+      ],
+      "saida": "figures/fig-classeA-normalizadores.pdf",
+      "transformacao": "postos por ordenação de colunas congeladas, validados contra postos_diferem_* e vencedor_* congelados; sem declaração de vencedor (R-TADM-1)"
+    },
+    {
+      "fontes": [
+        "analytical-outputs/a10_razao_erro_proxy.csv",
+        "analytical-outputs/tost_equivalencia_1pct.csv",
+        "analytical-outputs/melhor_ca_vs_melhor_gb.csv",
+        "analytical-outputs/a06_geo3_recorte.csv",
+        "analytical-outputs/a17_delta_gco2_por_algoritmo.csv",
+        "analytical-outputs/a04_contrastes_pareados.csv",
+        "analytical-outputs/a04_tau_ranking.csv"
+      ],
+      "saida": "figures/fig-sensibilidade-cenarios.pdf",
+      "transformacao": "seleção de valores congelados com validação por painel; métricas naturais, sem escala comum; qualificadores nas anotações"
+    },
+    {
+      "fontes": [
+        "analytical-outputs/vencedores_por_celula_metrica.csv",
+        "analytical-outputs/atendimento_e_postos.csv",
+        "provenance.json#celulas"
+      ],
+      "saida": "figures/fig-vencedores-comparaveis.pdf",
+      "transformacao": "mesmos dados de tables/vencedores-comparaveis.tex, renderizados"
+    },
+    {
+      "fontes": [
+        "provenance.json#celulas"
+      ],
+      "saida": "tables/celulas-classes.tex",
+      "transformacao": "transcrição das listas congeladas; ordenação alfabética por classe"
+    },
+    {
+      "fontes": [
+        "analytical-outputs/vencedores_por_celula_metrica.csv",
+        "analytical-outputs/atendimento_e_postos.csv",
+        "provenance.json#celulas"
+      ],
+      "saida": "tables/vencedores-comparaveis.tex",
+      "transformacao": "seleção (metrica=total_gco2; 18 células comparáveis) + mínimo de coluna por célula + formatação"
+    },
+    {
+      "fontes": [
+        "claims.csv",
+        "provenance.json#celulas",
+        "provenance.json#politica_de_unidades"
+      ],
+      "saida": "text-snippets/macros.tex",
+      "transformacao": "contagens por comprimento de lista e por frequência de campo; zero números digitados"
+    }
+  ]
+}

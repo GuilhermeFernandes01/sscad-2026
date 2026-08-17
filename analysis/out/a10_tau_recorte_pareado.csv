@@ -1,0 +1,5 @@
+celula,papel,par,n_sementes,tau_b_gco2_kwh_42a51,p_nao_corrigido
+az-realjun-folgada,referencia,pue-az-realjun-folgada,10,0.8888888888888888,0.00017029377577951654
+pue-az-realjun-folgada,pue_invertido,pue-az-realjun-folgada,10,0.07407407407407407,0.754062847918717
+go-realjun-folgada,referencia,pue-go-realjun-folgada,10,0.9629629629629629,4.6465836804030796e-05
+pue-go-realjun-folgada,pue_invertido,pue-go-realjun-folgada,10,0.25925925925925924,0.2728585025608301

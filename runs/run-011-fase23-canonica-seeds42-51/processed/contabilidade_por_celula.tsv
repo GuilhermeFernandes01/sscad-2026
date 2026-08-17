@@ -1,0 +1,11 @@
+celula	execucoes	parede_total_s	parede_mediana_s	parede_max_s	cpu_total_s	pico_memoria_max_kb	retentativas	falhas
+geo3-az-realjun-folgada	110	151.44	1.32	2.77	149.31	67420.0	0	0
+geo3-go-realjun-folgada	110	249.64	1.14	10.49	246.86	50904.0	0	0
+hetcap-az-anticorr-folgada	110	231.73	1.86	8.10	227.60	73688.0	0	0
+hetcap-az-realjun-folgada	110	258.03	1.89	5.94	254.89	72936.0	0	0
+net100-az-anticorr-folgada	110	202.17	1.86	2.40	198.24	73424.0	0	0
+net100-az-realjun-alta	110	2758.19	24.56	47.71	2736.31	206828.0	0	0
+net100-az-realjun-folgada	110	201.27	1.86	2.30	198.66	71552.0	0	0
+net100-go-realjun-folgada	110	158.47	1.41	2.07	155.92	49884.0	0	0
+pue-az-realjun-folgada	110	202.56	1.78	3.51	199.70	71632.0	0	0
+pue-go-realjun-folgada	110	159.29	1.38	3.76	157.60	49592.0	0	0

@@ -1,0 +1,15 @@
+celula,n_seeds,estava_no_teste_antigo
+az-em2021-alta,10,False
+az-em2021-folgada,10,False
+geo3-az-realjun-folgada,10,False
+geo3-go-realjun-folgada,10,False
+go-em2021-alta,10,False
+go-em2021-folgada,10,False
+hetcap-az-anticorr-folgada,10,False
+hetcap-az-realjun-folgada,10,False
+net100-az-anticorr-folgada,10,False
+net100-az-realjun-alta,10,False
+net100-az-realjun-folgada,10,False
+net100-go-realjun-folgada,10,True
+pue-az-realjun-folgada,10,False
+pue-go-realjun-folgada,10,True
